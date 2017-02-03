@@ -57,7 +57,26 @@ namespace Dados_do_Cliente
             else
             {
                 errError.SetError(lblNome, "");
-            }         
+            }
+
+            //instancia a classe de negócio
+            clClientes clClientes = new clClientes();
+
+            //carrega as propriedades
+            clClientes.cliNome = txtNome.Text;
+            clClientes.cliEndereco = txtEndereco.Text;
+            clClientes.cliNumero = txtNumero.Text;
+            clClientes.cliBairro = txtBairro.Text;
+            clClientes.cliCidade = txtCidade.Text;
+            clClientes.cliEstado = cboEstado.Text;
+            clClientes.cliCEP = mskCEP.Text;
+            clClientes.cliCelular = mskCelular.Text;
+
+            //variável com a string de conexão com o banco
+            clClientes.banco = Properties.Settings.Default.conexaoDB;
+
+            //chama o método gravar
+            clClientes.Gravar();       
         }
        private void PesquisarCEP(string CEP)
         {

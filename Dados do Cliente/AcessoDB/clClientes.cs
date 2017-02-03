@@ -52,6 +52,11 @@ namespace Negocio
             strQuery.Append("'" + cliCelular + "'");
 
             strQuery.Append(" ); ");
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
         }
     }
 }
