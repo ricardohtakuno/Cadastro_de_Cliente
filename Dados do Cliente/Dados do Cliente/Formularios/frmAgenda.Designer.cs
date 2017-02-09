@@ -48,16 +48,16 @@
             this.cboEstado = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.mskCelular = new System.Windows.Forms.MaskedTextBox();
-            this.btnCEP = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.errError = new System.Windows.Forms.ErrorProvider(this.components);
             this.tstSalvar = new System.Windows.Forms.ToolStripButton();
             this.tstExcluir = new System.Windows.Forms.ToolStripButton();
             this.tstPesquisar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tstSair = new System.Windows.Forms.ToolStripButton();
-            this.errError = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnCEP = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errError)).BeginInit();
@@ -237,16 +237,6 @@
             this.mskCelular.Size = new System.Drawing.Size(124, 24);
             this.mskCelular.TabIndex = 9;
             // 
-            // btnCEP
-            // 
-            this.btnCEP.Image = global::Dados_do_Cliente.Properties.Resources.Pesquisa;
-            this.btnCEP.Location = new System.Drawing.Point(116, 112);
-            this.btnCEP.Name = "btnCEP";
-            this.btnCEP.Size = new System.Drawing.Size(35, 26);
-            this.btnCEP.TabIndex = 3;
-            this.btnCEP.UseVisualStyleBackColor = true;
-            this.btnCEP.Click += new System.EventHandler(this.btnCEP_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtNome);
@@ -271,7 +261,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(771, 226);
+            this.groupBox1.Size = new System.Drawing.Size(809, 226);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Cliente";
@@ -291,6 +281,15 @@
             this.toolStrip1.Size = new System.Drawing.Size(1102, 39);
             this.toolStrip1.TabIndex = 21;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // errError
+            // 
+            this.errError.ContainerControl = this;
             // 
             // tstSalvar
             // 
@@ -322,11 +321,6 @@
             this.tstPesquisar.Text = "&Pesquisar";
             this.tstPesquisar.Click += new System.EventHandler(this.tstPesquisar_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
             // tstSair
             // 
             this.tstSair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -337,10 +331,6 @@
             this.tstSair.Text = "S&air";
             this.tstSair.Click += new System.EventHandler(this.tstSair_Click);
             // 
-            // errError
-            // 
-            this.errError.ContainerControl = this;
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -349,6 +339,16 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
             this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // btnCEP
+            // 
+            this.btnCEP.Image = global::Dados_do_Cliente.Properties.Resources.Pesquisa;
+            this.btnCEP.Location = new System.Drawing.Point(116, 112);
+            this.btnCEP.Name = "btnCEP";
+            this.btnCEP.Size = new System.Drawing.Size(35, 26);
+            this.btnCEP.TabIndex = 3;
+            this.btnCEP.UseVisualStyleBackColor = true;
+            this.btnCEP.Click += new System.EventHandler(this.btnCEP_Click);
             // 
             // frmAgenda
             // 

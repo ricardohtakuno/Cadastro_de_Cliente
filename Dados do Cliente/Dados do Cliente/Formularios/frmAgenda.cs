@@ -59,6 +59,14 @@ namespace Dados_do_Cliente
                 errError.SetError(lblNome, "");
             }
 
+            //pergunta para o usuário se ele confirma a inclusão do cadastro
+            DialogResult resposta;
+            resposta = MessageBox.Show("Confirma a inclusão?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (resposta.Equals(DialogResult.No))
+            {
+                return;
+            }
+
             //instancia a classe de negócio
             clClientes clClientes = new clClientes();
 
@@ -76,7 +84,10 @@ namespace Dados_do_Cliente
             clClientes.banco = Properties.Settings.Default.conexaoDB;
 
             //chama o método gravar
-            clClientes.Gravar();       
+            clClientes.Gravar();
+
+            //mensagem de confirmação da inclusão
+            MessageBox.Show("Cliente Incluído com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);       
         }
        private void PesquisarCEP(string CEP)
         {
