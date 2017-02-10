@@ -49,6 +49,7 @@ namespace Dados_do_Cliente
 
         private void tstSalvar_Click(object sender, EventArgs e)
         {
+            //validação do conteúdo
             if (txtNome.Text == "")
             {
                 errError.SetError(lblNome, "Campo Obrigatório");

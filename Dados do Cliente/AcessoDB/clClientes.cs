@@ -31,7 +31,7 @@ namespace Negocio
 
             strQuery.Append(" cliNome ");
             strQuery.Append(", cliEndereco ");
-            strQuery.Append(", cliNuemro ");
+            strQuery.Append(", cliNumero ");
             strQuery.Append(", cliBairro ");
             strQuery.Append(", cliCidade ");
             strQuery.Append(", cliEstado ");
@@ -43,13 +43,13 @@ namespace Negocio
             strQuery.Append(" VALUES ( ");
 
             strQuery.Append("'" + cliNome + "'");
-            strQuery.Append("'" + cliEndereco + "'");
-            strQuery.Append("'" + cliNumero + "'");
-            strQuery.Append("'" + cliBairro + "'");
-            strQuery.Append("'" + cliCidade + "'");
-            strQuery.Append("'" + cliEstado + "'");
-            strQuery.Append("'" + cliCEP + "'");
-            strQuery.Append("'" + cliCelular + "'");
+            strQuery.Append(",'" + cliEndereco + "'");
+            strQuery.Append(",'" + cliNumero + "'");
+            strQuery.Append(",'" + cliBairro + "'");
+            strQuery.Append(",'" + cliCidade + "'");
+            strQuery.Append(",'" + cliEstado + "'");
+            strQuery.Append(",'" + cliCEP + "'");
+            strQuery.Append(",'" + cliCelular + "'");
 
             strQuery.Append(" ); ");
 
