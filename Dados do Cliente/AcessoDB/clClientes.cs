@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Negocio
 {
@@ -57,6 +59,81 @@ namespace Negocio
             clAcessoDB clAcessoDB = new clAcessoDB();
             clAcessoDB.vConexao = banco;
             clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public void Alterar()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem de update
+            strQuery.Append("UPDATE tbClientes");
+
+            strQuery.Append(" SET ");
+
+            strQuery.Append(" cliNome = '" + cliNome + "'");
+            strQuery.Append(", cliEndereco = '" + cliEndereco + "'");
+            strQuery.Append(", cliNumero = '" + cliNumero + "'");
+            strQuery.Append(", cliBairro = '" + cliBairro + "'");
+            strQuery.Append(", cliCidade = '" + cliCidade + "'");
+            strQuery.Append(", cliEstado = '" + cliEstado + "'");
+            strQuery.Append(", cliCEP = '" + cliCEP + "'");
+            strQuery.Append(", cliCelular = '" + cliCelular + "'");
+
+            strQuery.Append(" WHERE ");
+
+            strQuery.Append(" cliCodigo = " + cliCodigo);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public void Excluir()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do delete
+            strQuery.Append(" DELETE FROM tbClientes ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" cliCodigo = " + cliCodigo);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public DataSet Pesquisar(string Campo, string Filtro)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbClientes ");
+           if (Campo != string.Empty && Filtro != string.Empty)
+            {
+                strQuery.Append(" WHERE ");
+                strQuery.Append(Campo + " LIKE '" + "%" + Filtro + "%" + "'");
+            }
+            strQuery.Append(" ORDER BY cliNome ");
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataSet(strQuery.ToString());
+        }
+        public SqlDataReader PesquisarCodigo(int cliCodigo)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT ");
+            strQuery.Append(" FROM tbClientes ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" cliCodigo = " + cliCodigo);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
     }
 }

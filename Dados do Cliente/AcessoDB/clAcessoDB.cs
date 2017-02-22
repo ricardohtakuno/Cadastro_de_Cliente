@@ -21,6 +21,7 @@ namespace Negocio
             conn.Open();
             return conn;
         }
+
         //método responsável por fechar a conexão com o banco de dados
         public void FechaBanco(SqlConnection conn)
         {
@@ -31,6 +32,7 @@ namespace Negocio
                 conn.Dispose();
             }
         }
+
         //método responsavel pro executar comandos (INSERT, UPDATE, DELETE) no banco de dados
         public void ExecutaComando(string strQuery)
         {
@@ -47,7 +49,7 @@ namespace Negocio
                 cmdComando.CommandType = CommandType.Text;
                 cmdComando.Connection = conn;
 
-                //passa os valores da query Sql, tipo do comando, conexão  e executa o comando
+                //passa os valores da query Sql, tipo do comando, conexão e executa o comando
                 cmdComando.ExecuteNonQuery();
             }
             //tratamento de excessões
@@ -61,7 +63,66 @@ namespace Negocio
                 FechaBanco(conn);
             }
         }
+
+        //DataSet é utilizado para retornar um volume grande de registros utilizado principalmente para o componente datagridview
+        public DataSet RetornaDataSet(string strQuery)
+        {
+            //cria o objeto de conexão
+            SqlConnection conn = new SqlConnection();
+            try
+            {
+                //abre a conexão com o banco de dados
+                conn = AbreBanco();
+                //cria o objeto de comando
+                SqlCommand cmdComando = new SqlCommand();
+                //passa os valores da query SQL, tipo do comando, conexão e executa o comando
+                cmdComando.CommandText = strQuery;
+                cmdComando.CommandType = CommandType.Text;
+                cmdComando.Connection = conn;
+                //declara um dataadapter
+                SqlDataAdapter daAdaptador = new SqlDataAdapter();
+                // declara um dataset
+                DataSet dsDataSet = new DataSet();
+                //passa o comando a ser executado pelo dataadapter
+                daAdaptador.SelectCommand = cmdComando;
+                //o dataadapter faz a conexão com o banco de dados, carrega o dataset e fecha a conexão
+                daAdaptador.Fill(dsDataSet);
+                //retorna o dataset carregado
+                return dsDataSet;
+                //tratamento de excessões
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                //em caso de erro ou não, o finally é executado para fechar a conexão com o banco de dados
+                FechaBanco(conn);
+            }
+        }
+        public SqlDataReader RetornaDataReader(string strQuery)
+        {
+            //cria o objeto de conexão
+            SqlConnection conn = new SqlConnection();
+            try
+            {
+                //abre a conexão com o banco de dados
+                conn = AbreBanco();
+                //cria o objeto de comando
+                SqlCommand cmdComando = new SqlCommand();
+                //passa os valores da query SQL, tipo do comando, conexão e executa o comando
+                cmdComando.CommandText = strQuery;
+                cmdComando.CommandType = CommandType.Text;
+                cmdComando.Connection = conn;
+                //retorna o comando executando a leitura
+                return cmdComando.ExecuteReader(CommandBehavior.CloseConnection);
+                //tratamento das excessões
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
-
 }
-
