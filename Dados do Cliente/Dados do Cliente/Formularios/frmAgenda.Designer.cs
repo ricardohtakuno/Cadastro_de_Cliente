@@ -46,7 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboOpcao = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpClientes = new System.Windows.Forms.GroupBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnCEP = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpClientes.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -185,6 +185,8 @@
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.Size = new System.Drawing.Size(851, 229);
             this.dgvClientes.TabIndex = 5;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
+            this.dgvClientes.DoubleClick += new System.EventHandler(this.dgvClientes_DoubleClick);
             // 
             // txtFiltro
             // 
@@ -202,6 +204,7 @@
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Filtro";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label1
             // 
@@ -224,11 +227,12 @@
             this.cboOpcao.Size = new System.Drawing.Size(121, 21);
             this.cboOpcao.TabIndex = 0;
             this.cboOpcao.Text = "NOME";
+            this.cboOpcao.SelectedIndexChanged += new System.EventHandler(this.cboOpcao_SelectedIndexChanged);
             this.cboOpcao.TextChanged += new System.EventHandler(this.cboOpcao_TextChanged);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.grpClientes);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -237,33 +241,33 @@
             this.tabPage2.Text = "Dados do Cliente";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grpClientes
             // 
-            this.groupBox1.Controls.Add(this.txtNome);
-            this.groupBox1.Controls.Add(this.btnCEP);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.mskCelular);
-            this.groupBox1.Controls.Add(this.txtCodigo);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.lblNome);
-            this.groupBox1.Controls.Add(this.cboEstado);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.mskCEP);
-            this.groupBox1.Controls.Add(this.txtCidade);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtEndereco);
-            this.groupBox1.Controls.Add(this.txtBairro);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtNumero);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(48, 33);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(809, 252);
-            this.groupBox1.TabIndex = 22;
-            this.groupBox1.TabStop = false;
+            this.grpClientes.Controls.Add(this.txtNome);
+            this.grpClientes.Controls.Add(this.btnCEP);
+            this.grpClientes.Controls.Add(this.label2);
+            this.grpClientes.Controls.Add(this.mskCelular);
+            this.grpClientes.Controls.Add(this.txtCodigo);
+            this.grpClientes.Controls.Add(this.label10);
+            this.grpClientes.Controls.Add(this.lblNome);
+            this.grpClientes.Controls.Add(this.cboEstado);
+            this.grpClientes.Controls.Add(this.label4);
+            this.grpClientes.Controls.Add(this.label9);
+            this.grpClientes.Controls.Add(this.mskCEP);
+            this.grpClientes.Controls.Add(this.txtCidade);
+            this.grpClientes.Controls.Add(this.label5);
+            this.grpClientes.Controls.Add(this.label8);
+            this.grpClientes.Controls.Add(this.txtEndereco);
+            this.grpClientes.Controls.Add(this.txtBairro);
+            this.grpClientes.Controls.Add(this.label6);
+            this.grpClientes.Controls.Add(this.label7);
+            this.grpClientes.Controls.Add(this.txtNumero);
+            this.grpClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpClientes.Location = new System.Drawing.Point(48, 33);
+            this.grpClientes.Name = "grpClientes";
+            this.grpClientes.Size = new System.Drawing.Size(809, 252);
+            this.grpClientes.TabIndex = 22;
+            this.grpClientes.TabStop = false;
             // 
             // txtNome
             // 
@@ -273,6 +277,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(646, 24);
             this.txtNome.TabIndex = 1;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // btnCEP
             // 
@@ -309,6 +314,7 @@
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(100, 24);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
             // label10
             // 
@@ -329,6 +335,7 @@
             this.lblNome.Size = new System.Drawing.Size(39, 13);
             this.lblNome.TabIndex = 3;
             this.lblNome.Text = "Nome";
+            this.lblNome.Click += new System.EventHandler(this.lblNome_Click);
             // 
             // cboEstado
             // 
@@ -469,8 +476,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpClientes.ResumeLayout(false);
+            this.grpClientes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,7 +495,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpClientes;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button btnCEP;
         private System.Windows.Forms.Label label2;

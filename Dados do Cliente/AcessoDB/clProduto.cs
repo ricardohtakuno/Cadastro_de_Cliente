@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Negocio
 {
@@ -46,6 +48,77 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             clAcessoDB.ExecutaComando(strQuery.ToString());
 
+        }
+        public void Alterar()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem de update
+            strQuery.Append("UPDATE tbProdutos");
+
+            strQuery.Append(" SET ");
+
+            strQuery.Append(" proDescricao = '" + proDescricao + "'");
+            strQuery.Append(", proMarca = '" + proMarca + "'");
+            strQuery.Append(", proPreco = '" + proPreco + "'");
+            strQuery.Append(", proData = '" + proData + "'");
+
+            strQuery.Append(" WHERE ");
+
+            strQuery.Append(" proCodigo = " + proCodigo);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public void Excluir()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do delete
+            strQuery.Append(" DELETE FROM tbProdutos ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" proCodigo = " + proCodigo);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public DataSet Pesquisar(string Campo, string Filtro)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbProdutos ");
+            if (Campo != string.Empty && Filtro != string.Empty)
+            {
+                strQuery.Append(" WHERE ");
+                strQuery.Append(Campo + " LIKE '" + "%" + Filtro + "%" + "'");
+            }
+            strQuery.Append(" ORDER BY proDescricao ");
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataSet(strQuery.ToString());
+        }
+        public SqlDataReader PesquisarCodigo(int proCodigo)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbProdutos ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" proCodigo = " + proCodigo);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
     }
 }

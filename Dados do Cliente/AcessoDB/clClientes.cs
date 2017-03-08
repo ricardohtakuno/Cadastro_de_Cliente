@@ -125,7 +125,7 @@ namespace Negocio
             StringBuilder strQuery = new StringBuilder();
 
             //montagem do select
-            strQuery.Append(" SELECT ");
+            strQuery.Append(" SELECT * ");
             strQuery.Append(" FROM tbClientes ");
             strQuery.Append(" WHERE ");
             strQuery.Append(" cliCodigo = " + cliCodigo);

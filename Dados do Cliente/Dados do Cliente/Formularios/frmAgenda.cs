@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using System.Data.SqlClient;
+
 namespace Dados_do_Cliente
 {
     public partial class frmAgenda : Form
@@ -63,7 +65,7 @@ namespace Dados_do_Cliente
 
             //pergunta para o usuário se ele confirma a inclusão do cadastro
             DialogResult resposta;
-            resposta = MessageBox.Show("Confirma a inclusão?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            resposta = MessageBox.Show("Confirma a inclusão/alteração?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (resposta.Equals(DialogResult.No))
             {
                 return;
@@ -86,10 +88,24 @@ namespace Dados_do_Cliente
             clClientes.banco = Properties.Settings.Default.conexaoDB;
 
             //chama o método gravar
-            clClientes.Gravar();
+            if (txtCodigo.Text == "")
+            {
+                clClientes.Gravar();
+            }
+            else
+            {
+                clClientes.cliCodigo = Convert.ToInt32(txtCodigo.Text);
+                clClientes.Alterar();
+            }
+
+            //atualiza o datagridview
+            Pesquisar();
+
+            //limpa a tela
+            limpar();
 
             //mensagem de confirmação da inclusão
-            MessageBox.Show("Cliente Incluído com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);       
+            MessageBox.Show("Cliente Incluído/Alterado com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);       
         }
        private void PesquisarCEP(string CEP)
         {
@@ -114,7 +130,58 @@ namespace Dados_do_Cliente
 
         private void tstExcluir_Click(object sender, EventArgs e)
         {
+            //validação do conteúdo
+            if (txtCodigo.Text == "")
+            {
+                return;
+            }
 
+            //pergunta para o usuário se ele confirma a exclusão do cadastro
+            DialogResult resposta;
+            resposta = MessageBox.Show("Confirma a exclusão do cliente?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (resposta.Equals(DialogResult.No))
+            {
+                return;
+            }
+
+            //instancia a classe de negócio
+            clClientes clClientes = new clClientes();
+
+            //variável com a string de conexão com o banco
+            clClientes.banco = Properties.Settings.Default.conexaoDB;
+            clClientes.cliCodigo = Convert.ToInt32(txtCodigo.Text);
+            clClientes.Excluir();
+
+            //atualiza o datagridview
+            Pesquisar();
+
+            //limpa a tela
+            limpar();
+
+            //mensagem de confirmação da exclusão
+            MessageBox.Show("Cliente excluido com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void limpar()
+        {
+            //limpa todos os campos do formulário
+            foreach (Control ctrl in grpClientes.Controls)
+            {
+                //textbox
+                if (ctrl is TextBox)
+                {
+                    ((TextBox)(ctrl)).Text = String.Empty;
+                }
+                //combobox
+                if (ctrl is ComboBox)
+                {
+                    ((ComboBox)(ctrl)).Text = string.Empty;
+                } 
+                //maskedtextbox
+                if (ctrl is MaskedTextBox)
+                {
+                    ((MaskedTextBox)(ctrl)).Text = string.Empty;
+                }
+            }
         }
 
         private void tstPesquisar_Click(object sender, EventArgs e)
@@ -157,6 +224,70 @@ namespace Dados_do_Cliente
 
             //comando utilizado para gerar um efeito "zebrado" no datagridview
             dgvClientes.AlternatingRowsDefaultCellStyle.BackColor = Color.Green;
+        }
+
+        private void dgvClientes_DoubleClick(object sender, EventArgs e)
+        {
+            //verifica se existe itens na grid
+            if (dgvClientes.RowCount == 0)
+            {
+                return;
+            }
+
+            //carrega a tela com todos os dados do cliente
+            SqlDataReader drReader;
+            clClientes clClientes = new clClientes();
+            clClientes.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clClientes.PesquisarCodigo(Convert.ToInt32(dgvClientes.CurrentRow.Cells[0].Value));
+
+            if (drReader.Read())
+            {
+                //transfere os dados do banco de dados para os campos do formulário
+                txtCodigo.Text = drReader["cliCodigo"].ToString();
+                txtNome.Text = drReader["cliNome"].ToString();
+                txtEndereco.Text = drReader["cliEndereco"].ToString();
+                txtNumero.Text = drReader["cliNumero"].ToString();
+                txtBairro.Text = drReader["cliBairro"].ToString();
+                txtCidade.Text = drReader["cliCidade"].ToString();
+                cboEstado.Text = drReader["cliEstado"].ToString();
+                mskCEP.Text = drReader["cliCEP"].ToString();
+                mskCelular.Text = drReader["cliCelular"].ToString();
+
+                //habilita o frame e envia o cursor para o campo nome
+                tabControl1.SelectedTab = tabPage2;
+                txtNome.Focus();
+            }
+            drReader.Close();
+        }
+
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboOpcao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
