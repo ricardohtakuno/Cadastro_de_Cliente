@@ -16,7 +16,7 @@ namespace Dados_do_Cliente
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dados_do_Cliente.Formularios.frmProduto());
+            Application.Run(new Dados_do_Cliente.Formularios.frmPrincipal());
         }
     }
 }

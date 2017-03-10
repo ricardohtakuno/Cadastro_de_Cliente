@@ -70,9 +70,22 @@ namespace Dados_do_Cliente.Formularios
             //variável com a string de conexão com o banco
             clProduto.banco = Properties.Settings.Default.conexaoDB;
 
-
             //chama o método gravar
-            clProduto.Gravar();
+            if (txtCodigo2.Text == "")
+            {
+                clProduto.Gravar();
+            }
+            else
+            {
+                clProduto.proCodigo = Convert.ToInt32(txtCodigo2.Text);
+                clProduto.Alterar();
+            }
+
+            //atualiza o datagridview
+            Pesquisar();
+
+            //limpa a tela
+            limpar();
 
             //mensagem de confirmação da inclusão
             MessageBox.Show("Produto Incluído com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -186,9 +199,9 @@ namespace Dados_do_Cliente.Formularios
 
             //carrega a tela com todos os dados do cliente
             SqlDataReader drReader;
-            clClientes clClientes = new clClientes();
-            clClientes.banco = Properties.Settings.Default.conexaoDB;
-            drReader = clClientes.PesquisarCodigo(Convert.ToInt32(dgvProdutos.CurrentRow.Cells[0].Value));
+            clProduto clProduto = new clProduto();
+            clProduto.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clProduto.PesquisarCodigo(Convert.ToInt32(dgvProdutos.CurrentRow.Cells[0].Value));
 
             if (drReader.Read())
             {
