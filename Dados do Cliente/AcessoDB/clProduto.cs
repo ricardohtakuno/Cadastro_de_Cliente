@@ -17,6 +17,7 @@ namespace Negocio
         public string proMarca { get; set; }
         public string proPreco { get; set; }
         public string proData { get; set; }
+
         public void Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
