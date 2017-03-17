@@ -31,10 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSenha = new System.Windows.Forms.TextBox();
-            this.btnOk = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,21 +69,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login";
             // 
-            // label2
+            // btnCancelar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Senha";
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.Location = new System.Drawing.Point(22, 104);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(206, 20);
-            this.txtSenha.TabIndex = 3;
+            this.btnCancelar.Location = new System.Drawing.Point(142, 153);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(86, 23);
+            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnOk
             // 
@@ -95,15 +89,21 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnCancelar
+            // txtSenha
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(142, 153);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(86, 23);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.txtSenha.Location = new System.Drawing.Point(22, 104);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(206, 20);
+            this.txtSenha.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Senha";
             // 
             // frmLogin
             // 
@@ -113,6 +113,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmLogin";
             this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -61,26 +61,26 @@
             // mnuAgenda
             // 
             this.mnuAgenda.Name = "mnuAgenda";
-            this.mnuAgenda.Size = new System.Drawing.Size(152, 22);
+            this.mnuAgenda.Size = new System.Drawing.Size(122, 22);
             this.mnuAgenda.Text = "Agenda";
             this.mnuAgenda.Click += new System.EventHandler(this.mnuAgenda_Click);
             // 
             // mnuProdutos
             // 
             this.mnuProdutos.Name = "mnuProdutos";
-            this.mnuProdutos.Size = new System.Drawing.Size(152, 22);
+            this.mnuProdutos.Size = new System.Drawing.Size(122, 22);
             this.mnuProdutos.Text = "Produtos";
             this.mnuProdutos.Click += new System.EventHandler(this.mnuProdutos_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(119, 6);
             // 
             // mnuSair
             // 
             this.mnuSair.Name = "mnuSair";
-            this.mnuSair.Size = new System.Drawing.Size(152, 22);
+            this.mnuSair.Size = new System.Drawing.Size(122, 22);
             this.mnuSair.Text = "&Sair";
             this.mnuSair.Click += new System.EventHandler(this.mnuSair_Click);
             // 
@@ -95,6 +95,8 @@
             this.Name = "frmPrincipal";
             this.Text = "frmPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmPrincipal_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

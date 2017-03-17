@@ -12,6 +12,10 @@ namespace Dados_do_Cliente.Formularios
 {
     public partial class frmPrincipal : Form
     {
+        //propriedades estáticas para receber informacões vindas de outro formulário
+        public static Boolean Clientes { get; set; }
+        public static Boolean Produtos { get; set; }
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -38,7 +42,26 @@ namespace Dados_do_Cliente.Formularios
         private void mnuSair_Click(object sender, EventArgs e)
         {
             //encerra o sistema
-            Close();
+            Application.Exit();
+        }
+
+        private void frmPrincipal_Activated(object sender, EventArgs e)
+        {
+            //desabilita o menus bloqueados para o usuário
+            if (Clientes == false)
+            {
+                mnuAgenda.Enabled = false;
+            }
+            if (Produtos == false)
+            {
+                mnuProdutos.Enabled = false;
+            }
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //encerra o sistema
+            Application.Exit();
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Negocio
             StringBuilder strQuery = new StringBuilder();
 
             //montagem do select
-            strQuery.Append(" SELECT usrNome, usrSenha ");
+            strQuery.Append(" SELECT usrNome, usrSenha, ");
+            strQuery.Append(" usrClientes, usrProdutos ");
             strQuery.Append(" FROM tbUsuarios ");
             strQuery.Append(" WHERE ");
             strQuery.Append(" usrNome = '" + usrNome + "'");

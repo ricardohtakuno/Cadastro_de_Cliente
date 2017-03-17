@@ -27,6 +27,9 @@ namespace Dados_do_Cliente.Formularios
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            bool Clientes;
+            bool Produtos;
+
             //verifica se o nome do usuário foi digitado
             if (txtUsuario.Text == "")
             {
@@ -54,13 +57,45 @@ namespace Dados_do_Cliente.Formularios
             }
             else
             {
-                //abre o formulário principal
+                //verifica a permissão de acesso do usuário
+                if (Convert.ToBoolean(drReader["usrClientes"].ToString()) == true)
+                {
+                    Clientes = true;
+                }
+                else
+                {
+                    Clientes = false;
+                }
+                if (Convert.ToBoolean(drReader["usrProdutos"].ToString()) == true)
+                {
+                    Produtos = true;
+                }
+                else
+                {
+                    Produtos = false;
+                }
+
+                //oculta o formulário de login
+                Hide();
+
+                //cria a instância do formulário principal
                 frmPrincipal frmPrincipal = new frmPrincipal();
+
+                //transfere as permissões de acesso para o frm principal
+                frmPrincipal.Clientes = Clientes;
+                frmPrincipal.Produtos = Produtos;
+
+                //abre o formulário principal
                 frmPrincipal.Show();
             }
 
             //fecha o DataReader
             drReader.Close();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
