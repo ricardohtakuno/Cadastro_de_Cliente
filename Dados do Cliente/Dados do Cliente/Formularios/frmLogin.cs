@@ -97,5 +97,12 @@ namespace Dados_do_Cliente.Formularios
         {
 
         }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            //abre o formulário de usuários
+            Form frmUsuarios = new frmUsuarios();
+
+        }
     }
 }

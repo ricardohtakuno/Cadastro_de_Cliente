@@ -36,5 +36,107 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
+        public void Gravar()
+        {
+            //variável utilizada para "concatenar" texto de forma estruturada
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do INSERT
+            strQuery.Append("INSERT INTO tbUsuarios");
+
+            strQuery.Append(" ( ");
+
+            strQuery.Append(" usrNome ");
+            strQuery.Append(", usrSenha ");
+            strQuery.Append(", usrClientes ");
+            strQuery.Append(", usrProdutos ");
+
+            strQuery.Append(" ) ");
+
+            strQuery.Append(" VALUES ( ");
+
+            strQuery.Append(" '" + usrNome + "'");
+            strQuery.Append(",'" + usrSenha + "'");
+            strQuery.Append(",'" + usrClientes + "'");
+            strQuery.Append(",'" + usrProdutos + "'");
+
+            strQuery.Append(" ); ");
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public void Alterar()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem de update
+            strQuery.Append("UPDATE tbUsuarios");
+
+            strQuery.Append(" SET ");
+
+            strQuery.Append(" usrNome = '" + usrNome + "'");
+            strQuery.Append(", usrSenha = '" + usrSenha + "'");
+            strQuery.Append(", usrClientes = '" + usrClientes + "'");
+            strQuery.Append(", usrProdutos = '" + usrProdutos + "'");
+
+            strQuery.Append(" WHERE ");
+
+            strQuery.Append(" usrCod = " + usrCod);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public void Excluir()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do delete
+            strQuery.Append(" DELETE FROM tbUsuarios ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" usrCod = " + usrCod);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public DataSet Pesquisar2(string Campo, string Filtro)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbUsuarios ");
+            if (Campo != string.Empty && Filtro != string.Empty)
+            {
+                strQuery.Append(" WHERE ");
+                strQuery.Append(Campo + " LIKE '" + "%" + Filtro + "%" + "'");
+            }
+            strQuery.Append(" ORDER BY usrNome ");
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataSet(strQuery.ToString());
+        }
+        public SqlDataReader PesquisarCodigo(int usrCod)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbUsuarios ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" usrCod = " + usrCod);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
     }
 }

@@ -237,5 +237,10 @@ namespace Dados_do_Cliente.Formularios
                 SendKeys.Send("{TAB}");
             }
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

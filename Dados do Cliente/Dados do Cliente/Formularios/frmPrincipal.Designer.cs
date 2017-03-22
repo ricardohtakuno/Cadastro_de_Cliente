@@ -34,6 +34,7 @@
             this.mnuProdutos = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSair = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             this.mnuCadastro.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAgenda,
             this.mnuProdutos,
+            this.mnuUsuarios,
             this.toolStripMenuItem1,
             this.mnuSair});
             this.mnuCadastro.Name = "mnuCadastro";
@@ -61,28 +63,34 @@
             // mnuAgenda
             // 
             this.mnuAgenda.Name = "mnuAgenda";
-            this.mnuAgenda.Size = new System.Drawing.Size(122, 22);
+            this.mnuAgenda.Size = new System.Drawing.Size(152, 22);
             this.mnuAgenda.Text = "Agenda";
             this.mnuAgenda.Click += new System.EventHandler(this.mnuAgenda_Click);
             // 
             // mnuProdutos
             // 
             this.mnuProdutos.Name = "mnuProdutos";
-            this.mnuProdutos.Size = new System.Drawing.Size(122, 22);
+            this.mnuProdutos.Size = new System.Drawing.Size(152, 22);
             this.mnuProdutos.Text = "Produtos";
             this.mnuProdutos.Click += new System.EventHandler(this.mnuProdutos_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(119, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuSair
             // 
             this.mnuSair.Name = "mnuSair";
-            this.mnuSair.Size = new System.Drawing.Size(122, 22);
+            this.mnuSair.Size = new System.Drawing.Size(152, 22);
             this.mnuSair.Text = "&Sair";
             this.mnuSair.Click += new System.EventHandler(this.mnuSair_Click);
+            // 
+            // mnuUsuarios
+            // 
+            this.mnuUsuarios.Name = "mnuUsuarios";
+            this.mnuUsuarios.Size = new System.Drawing.Size(152, 22);
+            this.mnuUsuarios.Text = "Usuários";
             // 
             // frmPrincipal
             // 
@@ -112,5 +120,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuProdutos;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuSair;
+        private System.Windows.Forms.ToolStripMenuItem mnuUsuarios;
     }
 }
