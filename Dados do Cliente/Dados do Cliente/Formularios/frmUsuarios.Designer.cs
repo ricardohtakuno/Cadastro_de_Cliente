@@ -1,4 +1,6 @@
-﻿namespace Dados_do_Cliente.Formularios
+﻿using System;
+
+namespace Dados_do_Cliente.Formularios
 {
     partial class frmUsuarios
     {
@@ -28,37 +30,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarios));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tstSalva3 = new System.Windows.Forms.ToolStripButton();
             this.tstExcluir3 = new System.Windows.Forms.ToolStripButton();
             this.tstPesquisar3 = new System.Windows.Forms.ToolStripButton();
+            this.tstAlterar3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tstSair3 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cboOpcao3 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFiltro3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.txtNome3 = new System.Windows.Forms.TextBox();
-            this.lblNome3 = new System.Windows.Forms.Label();
-            this.txtSenha3 = new System.Windows.Forms.TextBox();
-            this.lblSenha3 = new System.Windows.Forms.Label();
-            this.tstAlterar3 = new System.Windows.Forms.ToolStripButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFiltro3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboOpcao3 = new System.Windows.Forms.ComboBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grpUsuarios = new System.Windows.Forms.GroupBox();
+            this.lblCodigo3 = new System.Windows.Forms.Label();
             this.chkbClientes = new System.Windows.Forms.CheckBox();
+            this.lblNome3 = new System.Windows.Forms.Label();
+            this.lblSenha3 = new System.Windows.Forms.Label();
+            this.txtNome3 = new System.Windows.Forms.TextBox();
+            this.txtSenha3 = new System.Windows.Forms.TextBox();
             this.chkbProdutos = new System.Windows.Forms.CheckBox();
             this.txtCodigo3 = new System.Windows.Forms.TextBox();
-            this.lblCodigo3 = new System.Windows.Forms.Label();
-            this.grpUsuarios = new System.Windows.Forms.GroupBox();
+            this.errError = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.grpUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errError)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -94,6 +99,7 @@
             this.tstExcluir3.Name = "tstExcluir3";
             this.tstExcluir3.Size = new System.Drawing.Size(45, 22);
             this.tstExcluir3.Text = "&Excluir";
+            this.tstExcluir3.Click += new System.EventHandler(this.tstExcluir3_Click);
             // 
             // tstPesquisar3
             // 
@@ -103,6 +109,15 @@
             this.tstPesquisar3.Name = "tstPesquisar3";
             this.tstPesquisar3.Size = new System.Drawing.Size(61, 22);
             this.tstPesquisar3.Text = "&Pesquisar";
+            // 
+            // tstAlterar3
+            // 
+            this.tstAlterar3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tstAlterar3.Image = ((System.Drawing.Image)(resources.GetObject("tstAlterar3.Image")));
+            this.tstAlterar3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tstAlterar3.Name = "tstAlterar3";
+            this.tstAlterar3.Size = new System.Drawing.Size(46, 22);
+            this.tstAlterar3.Text = "&Alterar";
             // 
             // toolStripSeparator1
             // 
@@ -117,6 +132,7 @@
             this.tstSair3.Name = "tstSair3";
             this.tstSair3.Size = new System.Drawing.Size(30, 22);
             this.tstSair3.Text = "S&air";
+            this.tstSair3.Click += new System.EventHandler(this.tstSair3_Click);
             // 
             // tabControl1
             // 
@@ -143,17 +159,40 @@
             this.tabPage1.Text = "Pesquisar";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // dgvUsuarios
             // 
-            this.tabPage2.Controls.Add(this.grpUsuarios);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(889, 271);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Dados do Usuário";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Location = new System.Drawing.Point(20, 99);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.Size = new System.Drawing.Size(842, 150);
+            this.dgvUsuarios.TabIndex = 4;
+            this.dgvUsuarios.DoubleClick += new System.EventHandler(this.dgvUsuarios_DoubleClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(200, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Filtro";
+            // 
+            // txtFiltro3
+            // 
+            this.txtFiltro3.Location = new System.Drawing.Point(203, 53);
+            this.txtFiltro3.Name = "txtFiltro3";
+            this.txtFiltro3.Size = new System.Drawing.Size(659, 20);
+            this.txtFiltro3.TabIndex = 2;
+            this.txtFiltro3.TextChanged += new System.EventHandler(this.txtFiltro3_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Opção";
             // 
             // cboOpcao3
             // 
@@ -167,115 +206,17 @@
             this.cboOpcao3.Size = new System.Drawing.Size(148, 21);
             this.cboOpcao3.TabIndex = 0;
             // 
-            // label1
+            // tabPage2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Opção";
-            // 
-            // txtFiltro3
-            // 
-            this.txtFiltro3.Location = new System.Drawing.Point(203, 53);
-            this.txtFiltro3.Name = "txtFiltro3";
-            this.txtFiltro3.Size = new System.Drawing.Size(659, 20);
-            this.txtFiltro3.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(200, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Filtro";
-            // 
-            // dgvUsuarios
-            // 
-            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(20, 99);
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(842, 150);
-            this.dgvUsuarios.TabIndex = 4;
-            // 
-            // txtNome3
-            // 
-            this.txtNome3.Location = new System.Drawing.Point(153, 74);
-            this.txtNome3.Name = "txtNome3";
-            this.txtNome3.Size = new System.Drawing.Size(408, 20);
-            this.txtNome3.TabIndex = 0;
-            // 
-            // lblNome3
-            // 
-            this.lblNome3.AutoSize = true;
-            this.lblNome3.Location = new System.Drawing.Point(150, 58);
-            this.lblNome3.Name = "lblNome3";
-            this.lblNome3.Size = new System.Drawing.Size(35, 13);
-            this.lblNome3.TabIndex = 1;
-            this.lblNome3.Text = "Nome";
-            // 
-            // txtSenha3
-            // 
-            this.txtSenha3.Location = new System.Drawing.Point(582, 74);
-            this.txtSenha3.Name = "txtSenha3";
-            this.txtSenha3.Size = new System.Drawing.Size(174, 20);
-            this.txtSenha3.TabIndex = 2;
-            // 
-            // lblSenha3
-            // 
-            this.lblSenha3.AutoSize = true;
-            this.lblSenha3.Location = new System.Drawing.Point(579, 58);
-            this.lblSenha3.Name = "lblSenha3";
-            this.lblSenha3.Size = new System.Drawing.Size(38, 13);
-            this.lblSenha3.TabIndex = 3;
-            this.lblSenha3.Text = "Senha";
-            // 
-            // tstAlterar3
-            // 
-            this.tstAlterar3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tstAlterar3.Image = ((System.Drawing.Image)(resources.GetObject("tstAlterar3.Image")));
-            this.tstAlterar3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tstAlterar3.Name = "tstAlterar3";
-            this.tstAlterar3.Size = new System.Drawing.Size(46, 22);
-            this.tstAlterar3.Text = "&Alterar";
-            // 
-            // chkbClientes
-            // 
-            this.chkbClientes.AutoSize = true;
-            this.chkbClientes.Location = new System.Drawing.Point(370, 130);
-            this.chkbClientes.Name = "chkbClientes";
-            this.chkbClientes.Size = new System.Drawing.Size(63, 17);
-            this.chkbClientes.TabIndex = 4;
-            this.chkbClientes.Text = "Clientes";
-            this.chkbClientes.UseVisualStyleBackColor = true;
-            // 
-            // chkbProdutos
-            // 
-            this.chkbProdutos.AutoSize = true;
-            this.chkbProdutos.Location = new System.Drawing.Point(370, 170);
-            this.chkbProdutos.Name = "chkbProdutos";
-            this.chkbProdutos.Size = new System.Drawing.Size(68, 17);
-            this.chkbProdutos.TabIndex = 5;
-            this.chkbProdutos.Text = "Produtos";
-            this.chkbProdutos.UseVisualStyleBackColor = true;
-            // 
-            // txtCodigo3
-            // 
-            this.txtCodigo3.Location = new System.Drawing.Point(26, 74);
-            this.txtCodigo3.Name = "txtCodigo3";
-            this.txtCodigo3.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo3.TabIndex = 6;
-            // 
-            // lblCodigo3
-            // 
-            this.lblCodigo3.AutoSize = true;
-            this.lblCodigo3.Location = new System.Drawing.Point(23, 58);
-            this.lblCodigo3.Name = "lblCodigo3";
-            this.lblCodigo3.Size = new System.Drawing.Size(40, 13);
-            this.lblCodigo3.TabIndex = 7;
-            this.lblCodigo3.Text = "Código";
+            this.tabPage2.Controls.Add(this.grpUsuarios);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(889, 271);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Dados do Usuário";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // grpUsuarios
             // 
@@ -294,6 +235,79 @@
             this.grpUsuarios.TabStop = false;
             this.grpUsuarios.Text = "Dados do Usuário";
             // 
+            // lblCodigo3
+            // 
+            this.lblCodigo3.AutoSize = true;
+            this.lblCodigo3.Location = new System.Drawing.Point(23, 58);
+            this.lblCodigo3.Name = "lblCodigo3";
+            this.lblCodigo3.Size = new System.Drawing.Size(40, 13);
+            this.lblCodigo3.TabIndex = 7;
+            this.lblCodigo3.Text = "Código";
+            // 
+            // chkbClientes
+            // 
+            this.chkbClientes.AutoSize = true;
+            this.chkbClientes.Location = new System.Drawing.Point(370, 130);
+            this.chkbClientes.Name = "chkbClientes";
+            this.chkbClientes.Size = new System.Drawing.Size(63, 17);
+            this.chkbClientes.TabIndex = 4;
+            this.chkbClientes.Text = "Clientes";
+            this.chkbClientes.UseVisualStyleBackColor = true;
+            // 
+            // lblNome3
+            // 
+            this.lblNome3.AutoSize = true;
+            this.lblNome3.Location = new System.Drawing.Point(150, 58);
+            this.lblNome3.Name = "lblNome3";
+            this.lblNome3.Size = new System.Drawing.Size(35, 13);
+            this.lblNome3.TabIndex = 1;
+            this.lblNome3.Text = "Nome";
+            // 
+            // lblSenha3
+            // 
+            this.lblSenha3.AutoSize = true;
+            this.lblSenha3.Location = new System.Drawing.Point(579, 58);
+            this.lblSenha3.Name = "lblSenha3";
+            this.lblSenha3.Size = new System.Drawing.Size(38, 13);
+            this.lblSenha3.TabIndex = 3;
+            this.lblSenha3.Text = "Senha";
+            // 
+            // txtNome3
+            // 
+            this.txtNome3.Location = new System.Drawing.Point(153, 74);
+            this.txtNome3.Name = "txtNome3";
+            this.txtNome3.Size = new System.Drawing.Size(408, 20);
+            this.txtNome3.TabIndex = 0;
+            // 
+            // txtSenha3
+            // 
+            this.txtSenha3.Location = new System.Drawing.Point(582, 74);
+            this.txtSenha3.Name = "txtSenha3";
+            this.txtSenha3.Size = new System.Drawing.Size(174, 20);
+            this.txtSenha3.TabIndex = 2;
+            // 
+            // chkbProdutos
+            // 
+            this.chkbProdutos.AutoSize = true;
+            this.chkbProdutos.Location = new System.Drawing.Point(370, 170);
+            this.chkbProdutos.Name = "chkbProdutos";
+            this.chkbProdutos.Size = new System.Drawing.Size(68, 17);
+            this.chkbProdutos.TabIndex = 5;
+            this.chkbProdutos.Text = "Produtos";
+            this.chkbProdutos.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigo3
+            // 
+            this.txtCodigo3.Location = new System.Drawing.Point(26, 74);
+            this.txtCodigo3.Name = "txtCodigo3";
+            this.txtCodigo3.ReadOnly = true;
+            this.txtCodigo3.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo3.TabIndex = 6;
+            // 
+            // errError
+            // 
+            this.errError.ContainerControl = this;
+            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,18 +317,26 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmUsuarios";
             this.Text = "frmUsuarios";
+            this.Load += new System.EventHandler(this.frmUsuarios_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmUsuarios_KeyPress);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.grpUsuarios.ResumeLayout(false);
             this.grpUsuarios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -343,5 +365,6 @@
         private System.Windows.Forms.TextBox txtCodigo3;
         private System.Windows.Forms.Label lblCodigo3;
         private System.Windows.Forms.GroupBox grpUsuarios;
+        private System.Windows.Forms.ErrorProvider errError;
     }
 }

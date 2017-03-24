@@ -32,7 +32,7 @@ namespace Dados_do_Cliente.Formularios
 
         private void mnuProdutos_Click(object sender, EventArgs e)
         {
-            //abre o formulário agenda
+            //abre o formulário Produtos
             //utilizando formulário MDI
             Form frmProduto = new frmProduto();
             frmProduto.MdiParent = this;
@@ -62,6 +62,15 @@ namespace Dados_do_Cliente.Formularios
         {
             //encerra o sistema
             Application.Exit();
+        }
+
+        private void mnuUsuarios_Click(object sender, EventArgs e)
+        {
+            //abre o formulário Usuários
+            //utilizando formulário MDI
+            Form frmUsuarios = new frmUsuarios();
+            frmUsuarios.MdiParent = this;
+            frmUsuarios.Show();
         }
     }
 }

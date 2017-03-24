@@ -17,25 +17,6 @@ namespace Negocio
         public string usrSenha { get; set; }
         public string usrClientes { get; set; }
         public string usrProdutos { get; set; }
-
-        public SqlDataReader Pesquisar(string usrNome, string usrSenha)
-        {
-            StringBuilder strQuery = new StringBuilder();
-
-            //montagem do select
-            strQuery.Append(" SELECT usrNome, usrSenha, ");
-            strQuery.Append(" usrClientes, usrProdutos ");
-            strQuery.Append(" FROM tbUsuarios ");
-            strQuery.Append(" WHERE ");
-            strQuery.Append(" usrNome = '" + usrNome + "'");
-            strQuery.Append(" AND ");
-            strQuery.Append(" usrSenha = '" + usrSenha + "'");
-
-            //executa o comando
-            clAcessoDB clAcessoDB = new clAcessoDB();
-            clAcessoDB.vConexao = banco;
-            return clAcessoDB.RetornaDataReader(strQuery.ToString());
-        }
         public void Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
@@ -104,12 +85,13 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             clAcessoDB.ExecutaComando(strQuery.ToString());
         }
-        public DataSet Pesquisar2(string Campo, string Filtro)
+        public DataSet PesquisarGrid(string Campo, string Filtro)
         {
             StringBuilder strQuery = new StringBuilder();
 
             //montagem do select
-            strQuery.Append(" SELECT * ");
+            strQuery.Append(" SELECT usrCod Codigo, usrNome Nome, ");
+            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos ");
             strQuery.Append(" FROM tbUsuarios ");
             if (Campo != string.Empty && Filtro != string.Empty)
             {
@@ -123,7 +105,8 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataSet(strQuery.ToString());
         }
-        public SqlDataReader PesquisarCodigo(int usrCod)
+        //Sobrecarga de métodos é quando temos métodos com o mesmo nome mas com assinatura "argumentos" diferentes
+        public SqlDataReader Pesquisar(int usrCod)
         {
             StringBuilder strQuery = new StringBuilder();
 
@@ -132,6 +115,24 @@ namespace Negocio
             strQuery.Append(" FROM tbUsuarios ");
             strQuery.Append(" WHERE ");
             strQuery.Append(" usrCod = " + usrCod);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
+        public SqlDataReader Pesquisar(string usrNome, string usrSenha)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT usrNome, usrSenha, ");
+            strQuery.Append(" usrClientes, usrProdutos ");
+            strQuery.Append(" FROM tbUsuarios ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" usrNome = '" + usrNome + "'");
+            strQuery.Append(" AND ");
+            strQuery.Append(" usrSenha = '" + usrSenha + "'");
 
             //executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();

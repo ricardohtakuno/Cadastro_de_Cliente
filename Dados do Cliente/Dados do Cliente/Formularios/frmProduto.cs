@@ -19,11 +19,6 @@ namespace Dados_do_Cliente.Formularios
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void tstSalvar_Click(object sender, EventArgs e)
         {
             //validação do conteúdo
@@ -175,7 +170,7 @@ namespace Dados_do_Cliente.Formularios
                 campo = "proMarca";
             }
 
-            //carrega o datagridview com os clientes cadastrados
+            //carrega o datagridview com os produtos cadastrados
             clProduto clProduto = new clProduto();
             clProduto.banco = Properties.Settings.Default.conexaoDB;
             dgvProdutos.DataSource = clProduto.Pesquisar(campo, txtFiltro2.Text).Tables[0];
