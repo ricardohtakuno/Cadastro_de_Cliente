@@ -57,6 +57,7 @@ namespace Dados_do_Cliente.Formularios
             this.chkbProdutos = new System.Windows.Forms.CheckBox();
             this.txtCodigo3 = new System.Windows.Forms.TextBox();
             this.errError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkbUsuarios = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -220,6 +221,7 @@ namespace Dados_do_Cliente.Formularios
             // 
             // grpUsuarios
             // 
+            this.grpUsuarios.Controls.Add(this.chkbUsuarios);
             this.grpUsuarios.Controls.Add(this.lblCodigo3);
             this.grpUsuarios.Controls.Add(this.chkbClientes);
             this.grpUsuarios.Controls.Add(this.lblNome3);
@@ -289,7 +291,7 @@ namespace Dados_do_Cliente.Formularios
             // chkbProdutos
             // 
             this.chkbProdutos.AutoSize = true;
-            this.chkbProdutos.Location = new System.Drawing.Point(370, 170);
+            this.chkbProdutos.Location = new System.Drawing.Point(370, 153);
             this.chkbProdutos.Name = "chkbProdutos";
             this.chkbProdutos.Size = new System.Drawing.Size(68, 17);
             this.chkbProdutos.TabIndex = 5;
@@ -307,6 +309,16 @@ namespace Dados_do_Cliente.Formularios
             // errError
             // 
             this.errError.ContainerControl = this;
+            // 
+            // chkbUsuarios
+            // 
+            this.chkbUsuarios.AutoSize = true;
+            this.chkbUsuarios.Location = new System.Drawing.Point(370, 177);
+            this.chkbUsuarios.Name = "chkbUsuarios";
+            this.chkbUsuarios.Size = new System.Drawing.Size(67, 17);
+            this.chkbUsuarios.TabIndex = 8;
+            this.chkbUsuarios.Text = "Usuários";
+            this.chkbUsuarios.UseVisualStyleBackColor = true;
             // 
             // frmUsuarios
             // 
@@ -366,5 +378,6 @@ namespace Dados_do_Cliente.Formularios
         private System.Windows.Forms.Label lblCodigo3;
         private System.Windows.Forms.GroupBox grpUsuarios;
         private System.Windows.Forms.ErrorProvider errError;
+        private System.Windows.Forms.CheckBox chkbUsuarios;
     }
 }

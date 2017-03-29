@@ -69,5 +69,15 @@ namespace Dados_do_Cliente.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap workstation_147953_960_720 {
+            get {
+                object obj = ResourceManager.GetObject("workstation-147953_960_720", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace Negocio
         public string usrSenha { get; set; }
         public string usrClientes { get; set; }
         public string usrProdutos { get; set; }
+        public string usrUsuarios { get; set; }
         public void Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
@@ -31,6 +32,7 @@ namespace Negocio
             strQuery.Append(", usrSenha ");
             strQuery.Append(", usrClientes ");
             strQuery.Append(", usrProdutos ");
+            strQuery.Append(", usrUsuarios ");
 
             strQuery.Append(" ) ");
 
@@ -40,6 +42,7 @@ namespace Negocio
             strQuery.Append(",'" + usrSenha + "'");
             strQuery.Append(",'" + usrClientes + "'");
             strQuery.Append(",'" + usrProdutos + "'");
+            strQuery.Append(",'" + usrUsuarios + "'");
 
             strQuery.Append(" ); ");
 
@@ -61,6 +64,7 @@ namespace Negocio
             strQuery.Append(", usrSenha = '" + usrSenha + "'");
             strQuery.Append(", usrClientes = '" + usrClientes + "'");
             strQuery.Append(", usrProdutos = '" + usrProdutos + "'");
+            strQuery.Append(", usrUsuarios = '" + usrUsuarios + "'");
 
             strQuery.Append(" WHERE ");
 
@@ -91,7 +95,7 @@ namespace Negocio
 
             //montagem do select
             strQuery.Append(" SELECT usrCod Codigo, usrNome Nome, ");
-            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos ");
+            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos, usrUsuarios Usuarios ");
             strQuery.Append(" FROM tbUsuarios ");
             if (Campo != string.Empty && Filtro != string.Empty)
             {
@@ -127,7 +131,7 @@ namespace Negocio
 
             //montagem do select
             strQuery.Append(" SELECT usrNome, usrSenha, ");
-            strQuery.Append(" usrClientes, usrProdutos ");
+            strQuery.Append(" usrClientes, usrProdutos, usrUsuarios ");
             strQuery.Append(" FROM tbUsuarios ");
             strQuery.Append(" WHERE ");
             strQuery.Append(" usrNome = '" + usrNome + "'");

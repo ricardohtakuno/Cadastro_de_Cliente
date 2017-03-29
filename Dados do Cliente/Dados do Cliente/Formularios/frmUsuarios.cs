@@ -71,6 +71,14 @@ namespace Dados_do_Cliente.Formularios
             {
                 clUsuarios.usrProdutos = "0";
             }
+            if (chkbUsuarios.Checked == true)
+            {
+                clUsuarios.usrUsuarios = "1";
+            }
+            else
+            {
+                clUsuarios.usrUsuarios = "0";
+            }
 
             //variável com a string de conexão com o banco
             clUsuarios.banco = Properties.Settings.Default.conexaoDB;
@@ -222,6 +230,14 @@ namespace Dados_do_Cliente.Formularios
                 else
                 {
                     chkbProdutos.Checked = false;
+                }
+                if (Convert.ToBoolean(drReader["usrUsuarios"].ToString()) == true)
+                {
+                    chkbUsuarios.Checked = true;
+                }
+                else
+                {
+                    chkbUsuarios.Checked = false;
                 }
 
                 //habilita o frame e envia o cursor para o campo nome
