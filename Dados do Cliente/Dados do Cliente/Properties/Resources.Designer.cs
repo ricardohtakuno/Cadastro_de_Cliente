@@ -63,6 +63,16 @@ namespace Dados_do_Cliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _14115359_ico_pos_graduacao {
+            get {
+                object obj = ResourceManager.GetObject("14115359-ico-pos-graduacao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pesquisa {
             get {
                 object obj = ResourceManager.GetObject("Pesquisa", resourceCulture);

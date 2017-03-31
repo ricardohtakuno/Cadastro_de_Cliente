@@ -294,5 +294,10 @@ namespace Dados_do_Cliente
         {
 
         }
+
+        private void btnCEP_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

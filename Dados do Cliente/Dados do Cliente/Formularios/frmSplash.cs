@@ -29,5 +29,11 @@ namespace Dados_do_Cliente.Formularios
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();
         }
+
+        private void frmSplash_Load(object sender, EventArgs e)
+        {
+            //muda o ponteiro do mouse
+            UseWaitCursor = true;
+        }
     }
 }
