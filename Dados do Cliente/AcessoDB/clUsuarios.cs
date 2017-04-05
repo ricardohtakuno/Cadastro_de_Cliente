@@ -18,6 +18,7 @@ namespace Negocio
         public string usrClientes { get; set; }
         public string usrProdutos { get; set; }
         public string usrUsuarios { get; set; }
+        public string usrFornecedores { get; set; }
         public void Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
@@ -33,6 +34,7 @@ namespace Negocio
             strQuery.Append(", usrClientes ");
             strQuery.Append(", usrProdutos ");
             strQuery.Append(", usrUsuarios ");
+            strQuery.Append(", usrFornecedores ");
 
             strQuery.Append(" ) ");
 
@@ -43,6 +45,7 @@ namespace Negocio
             strQuery.Append(",'" + usrClientes + "'");
             strQuery.Append(",'" + usrProdutos + "'");
             strQuery.Append(",'" + usrUsuarios + "'");
+            strQuery.Append(",'" + usrFornecedores + "'");
 
             strQuery.Append(" ); ");
 
@@ -65,6 +68,7 @@ namespace Negocio
             strQuery.Append(", usrClientes = '" + usrClientes + "'");
             strQuery.Append(", usrProdutos = '" + usrProdutos + "'");
             strQuery.Append(", usrUsuarios = '" + usrUsuarios + "'");
+            strQuery.Append(", usrFornecedores = '" + usrFornecedores + "'");
 
             strQuery.Append(" WHERE ");
 
@@ -95,7 +99,7 @@ namespace Negocio
 
             //montagem do select
             strQuery.Append(" SELECT usrCod Codigo, usrNome Nome, ");
-            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos, usrUsuarios Usuarios ");
+            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos, usrUsuarios Usuarios, usrFornecedores Fornecedores ");
             strQuery.Append(" FROM tbUsuarios ");
             if (Campo != string.Empty && Filtro != string.Empty)
             {
@@ -131,7 +135,7 @@ namespace Negocio
 
             //montagem do select
             strQuery.Append(" SELECT usrNome, usrSenha, ");
-            strQuery.Append(" usrClientes, usrProdutos, usrUsuarios ");
+            strQuery.Append(" usrClientes, usrProdutos, usrUsuarios, usrFornecedores ");
             strQuery.Append(" FROM tbUsuarios ");
             strQuery.Append(" WHERE ");
             strQuery.Append(" usrNome = '" + usrNome + "'");

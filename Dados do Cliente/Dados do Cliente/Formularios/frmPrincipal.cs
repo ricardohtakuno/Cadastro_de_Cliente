@@ -15,6 +15,7 @@ namespace Dados_do_Cliente.Formularios
         //propriedades estáticas para receber informacões vindas de outro formulário
         public static Boolean Clientes { get; set; }
         public static Boolean Produtos { get; set; }
+        public static Boolean Fornecedores { get; set; }
 
         public frmPrincipal()
         {
@@ -56,6 +57,10 @@ namespace Dados_do_Cliente.Formularios
             {
                 mnuProdutos.Enabled = false;
             }
+            if (Fornecedores == false)
+            {
+                mnuFornecedores.Enabled = false;
+            }
         }
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -71,6 +76,20 @@ namespace Dados_do_Cliente.Formularios
             Form frmUsuarios = new frmUsuarios();
             frmUsuarios.MdiParent = this;
             frmUsuarios.Show();
+        }
+
+        private void mnuFornecedores_Click(object sender, EventArgs e)
+        {
+            //abre o formulário Usuários
+            //utilizando formulário MDI
+            Form frmFornecedor = new frmFornecedor();
+            frmFornecedor.MdiParent = this;
+            frmFornecedor.Show();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

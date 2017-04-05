@@ -79,6 +79,14 @@ namespace Dados_do_Cliente.Formularios
             {
                 clUsuarios.usrUsuarios = "0";
             }
+            if (chkbFornecedores.Checked == true)
+            {
+                clUsuarios.usrFornecedores = "1";
+            }
+            else
+            {
+                clUsuarios.usrFornecedores = "0";
+            }
 
             //variável com a string de conexão com o banco
             clUsuarios.banco = Properties.Settings.Default.conexaoDB;

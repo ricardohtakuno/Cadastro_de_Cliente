@@ -46,7 +46,7 @@ namespace Negocio
 
             strQuery.Append(" VALUES ( ");
 
-            strQuery.Append("'" + NomeDaEmpresa + "'");
+            strQuery.Append(" '" + NomeDaEmpresa + "'");
             strQuery.Append(",'" + NomeDoContato + "'");
             strQuery.Append(",'" + Endereco + "'");
             strQuery.Append(",'" + Bairro + "'");
@@ -72,7 +72,7 @@ namespace Negocio
 
             strQuery.Append(" SET ");
 
-            strQuery.Append(" NomeDaEmpreda = '" + NomeDaEmpresa + "'");
+            strQuery.Append(" NomeDaEmpresa = '" + NomeDaEmpresa + "'");
             strQuery.Append(", NomeDoContato = '" + NomeDoContato + "'");
             strQuery.Append(", Endereco = '" + Endereco + "'");
             strQuery.Append(", Bairro = '" + Bairro + "'");

@@ -35,6 +35,7 @@
             this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSair = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFornecedores = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +55,7 @@
             this.mnuAgenda,
             this.mnuProdutos,
             this.mnuUsuarios,
+            this.mnuFornecedores,
             this.toolStripMenuItem1,
             this.mnuSair});
             this.mnuCadastro.Name = "mnuCadastro";
@@ -93,6 +95,13 @@
             this.mnuSair.Text = "&Sair";
             this.mnuSair.Click += new System.EventHandler(this.mnuSair_Click);
             // 
+            // mnuFornecedores
+            // 
+            this.mnuFornecedores.Name = "mnuFornecedores";
+            this.mnuFornecedores.Size = new System.Drawing.Size(152, 22);
+            this.mnuFornecedores.Text = "Fornecedores";
+            this.mnuFornecedores.Click += new System.EventHandler(this.mnuFornecedores_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,6 +115,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmPrincipal_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -122,5 +132,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuSair;
         private System.Windows.Forms.ToolStripMenuItem mnuUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem mnuFornecedores;
     }
 }

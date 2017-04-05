@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using System.Data.SqlClient;
 
 namespace Dados_do_Cliente.Formularios
 {
@@ -138,8 +139,8 @@ namespace Dados_do_Cliente.Formularios
             if (ds.Tables[0].Rows[0]["resultado_txt"].ToString() == "sucesso - cep completo" || ds.Tables[0].Rows[0]["resultado_txt"].ToString() == "sucesso - cep único")
             {
                 txtEndereco.Text = ds.Tables[0].Rows[0]["tipo_logradouro"].ToString() + " " + ds.Tables[0].Rows[0]["logradouro"].ToString();
-                txtBairro.Text = ds.Tables[0].Rows[0]["bairro"].ToString();
-                txtCidade.Text = ds.Tables[0].Rows[0]["cidade"].ToString();
+                txtBairro.Text = ds.Tables[0].Rows[0]["Bairro"].ToString();
+                txtCidade.Text = ds.Tables[0].Rows[0]["Cidade"].ToString();
                 cboEstado.Text = ds.Tables[0].Rows[0]["uf"].ToString();
                 txtNumero.Focus();
             }
@@ -175,6 +176,77 @@ namespace Dados_do_Cliente.Formularios
         {
             //chama o método pesquisar
             Pesquisar();
+        }
+        public void Pesquisar()
+        {
+            string campo = "";
+
+            //seleciona o campo de pesquisa
+            if (cboOpcao4.Text == "CÓDIGO")
+            {
+                campo = "CodigoFornecedor";
+            }
+            else if (cboOpcao4.Text == "NOME DA EMPRESA")
+            {
+                campo = "NomeDaEmpresa";
+            }
+            else if (cboOpcao4.Text == "TELEFONE")
+            {
+                campo = "Telefone";
+            }
+
+            //carrega o datagridview com os clientes cadastrados
+            clFornecedores clFornecedores = new clFornecedores();
+            clFornecedores.banco = Properties.Settings.Default.conexaoDB;
+            dgvFornecedor.DataSource = clFornecedores.Pesquisar(campo, txtFiltro4.Text).Tables[0];
+
+            //comando utilizado para gerar um efeito "zebrado" no datagridview
+            dgvFornecedor.AlternatingRowsDefaultCellStyle.BackColor = Color.Green;
+        }
+
+        private void dgvFornecedor_DoubleClick(object sender, EventArgs e)
+        {
+            //verifica se existe itens na grid
+            if (dgvFornecedor.RowCount == 0)
+            {
+                return;
+            }
+
+            //carrega a tela com todos os dados do cliente
+            SqlDataReader drReader;
+            clFornecedores clFornecedores = new clFornecedores();
+            clFornecedores.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clFornecedores.PesquisarCodigo(Convert.ToInt32(dgvFornecedor.CurrentRow.Cells[0].Value));
+
+            if (drReader.Read())
+            {
+                //transfere os dados do banco de dados para os campos do formulário
+                txtCodigo.Text = drReader["CodigoFornecedor"].ToString();
+                txtNomeDaEmpresa.Text = drReader["NomeDaEmpresa"].ToString();
+                txtEndereco.Text = drReader["Endereco"].ToString();
+                txtNumero.Text = drReader["Numero"].ToString();
+                txtBairro.Text = drReader["Bairro"].ToString();
+                txtCidade.Text = drReader["Cidade"].ToString();
+                cboEstado.Text = drReader["Estado"].ToString();
+                mskCEP.Text = drReader["CEP"].ToString();
+                mskTelefone.Text = drReader["Telefone"].ToString();
+
+                //habilita o frame e envia o cursor para o campo nome
+                tabControl1.SelectedTab = tabPage2;
+                txtNomeDaEmpresa.Focus();
+            }
+            drReader.Close();
+        }
+
+        private void txtFiltro4_TextChanged(object sender, EventArgs e)
+        {
+            //chama o método pesquisar
+            Pesquisar();
+        }
+
+        private void btnCEP_Click(object sender, EventArgs e)
+        {
+            PesquisarCEP(mskCEP.Text);
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Dados_do_Cliente.Formularios
         {
             bool Clientes;
             bool Produtos;
+            bool Fornecedores;
 
             //verifica se o nome do usuário foi digitado
             if (txtUsuario.Text == "")
@@ -74,6 +75,14 @@ namespace Dados_do_Cliente.Formularios
                 {
                     Produtos = false;
                 }
+                if (Convert.ToBoolean(drReader["usrFornecedores"].ToString()) == true)
+                {
+                    Fornecedores = true;
+                }
+                else
+                {
+                    Fornecedores = false;
+                }
 
                 //oculta o formulário de login
                 Hide();
@@ -84,6 +93,7 @@ namespace Dados_do_Cliente.Formularios
                 //transfere as permissões de acesso para o frm principal
                 frmPrincipal.Clientes = Clientes;
                 frmPrincipal.Produtos = Produtos;
+                frmPrincipal.Fornecedores = Fornecedores;
 
                 //abre o formulário principal
                 frmPrincipal.Show();
