@@ -24,11 +24,11 @@ namespace Dados_do_Cliente
             //chama o método pesquisar
             Pesquisar();
         }
-
+       
         private void btnCEP_Click(object sender, EventArgs e)
         {
             PesquisarCEP(mskCEP.Text);
-
+           
         }
 
         private void frmAgenda_KeyPress(object sender, KeyPressEventArgs e)
@@ -83,7 +83,6 @@ namespace Dados_do_Cliente
             clClientes.cliEstado = cboEstado.Text;
             clClientes.cliCEP = mskCEP.Text;
             clClientes.cliCelular = mskCelular.Text;
-            clClientes.cliCPF = mskCPF.Text;
 
             //variável com a string de conexão com o banco
             clClientes.banco = Properties.Settings.Default.conexaoDB;
@@ -106,9 +105,9 @@ namespace Dados_do_Cliente
             limpar();
 
             //mensagem de confirmação da inclusão
-            MessageBox.Show("Cliente Incluído/Alterado com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Cliente Incluído/Alterado com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);       
         }
-        private void PesquisarCEP(string CEP)
+       private void PesquisarCEP(string CEP)
         {
             //pesquisa de CEP
             DataSet ds = new DataSet();
@@ -176,7 +175,7 @@ namespace Dados_do_Cliente
                 if (ctrl is ComboBox)
                 {
                     ((ComboBox)(ctrl)).Text = string.Empty;
-                }
+                } 
                 //maskedtextbox
                 if (ctrl is MaskedTextBox)
                 {
@@ -299,26 +298,6 @@ namespace Dados_do_Cliente
         private void btnCEP_Click_1(object sender, EventArgs e)
         {
 
-        }
-
-        private void mskCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void btnValidar_Click(object sender, EventArgs e)
-        {
-            string mensagem = "";
-            string valor = mskCPF.Text;
-            if (ValidaçãoCPF.IsCpf(valor))
-            {
-                mensagem = "O número é um CPF válido!";
-            }
-            else
-            {
-                mensagem = "O número é um CPF invalido!";
-            }
-            MessageBox.Show(mensagem, "Validação");
         }
     }
 }

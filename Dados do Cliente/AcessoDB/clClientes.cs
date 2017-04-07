@@ -21,7 +21,6 @@ namespace Negocio
         public string cliEstado { get; set; }
         public string cliCEP { get; set; }
         public string cliCelular { get; set; }
-        public string cliCPF { get; set; }
         public void Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
@@ -40,7 +39,6 @@ namespace Negocio
             strQuery.Append(", cliEstado ");
             strQuery.Append(", cliCEP ");
             strQuery.Append(", cliCelular ");
-            strQuery.Append(", cliCPF ");
 
             strQuery.Append(" ) ");
 
@@ -54,7 +52,6 @@ namespace Negocio
             strQuery.Append(",'" + cliEstado + "'");
             strQuery.Append(",'" + cliCEP + "'");
             strQuery.Append(",'" + cliCelular + "'");
-            strQuery.Append(",'" + cliCPF + "'");
 
             strQuery.Append(" ); ");
 
@@ -80,7 +77,6 @@ namespace Negocio
             strQuery.Append(", cliEstado = '" + cliEstado + "'");
             strQuery.Append(", cliCEP = '" + cliCEP + "'");
             strQuery.Append(", cliCelular = '" + cliCelular + "'");
-            strQuery.Append(", cliCPF = '" + cliCPF + "'");
 
             strQuery.Append(" WHERE ");
 

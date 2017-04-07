@@ -31,12 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgenda));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tstSalvar = new System.Windows.Forms.ToolStripButton();
-            this.tstExcluir = new System.Windows.Forms.ToolStripButton();
-            this.tstPesquisar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tstSair = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.errError = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -48,7 +43,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpClientes = new System.Windows.Forms.GroupBox();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.btnCEP = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.mskCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -66,9 +60,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.lblCPF = new System.Windows.Forms.Label();
-            this.mskCPF = new System.Windows.Forms.MaskedTextBox();
-            this.btnValidar = new System.Windows.Forms.Button();
+            this.btnCEP = new System.Windows.Forms.Button();
+            this.tstSalvar = new System.Windows.Forms.ToolStripButton();
+            this.tstExcluir = new System.Windows.Forms.ToolStripButton();
+            this.tstPesquisar = new System.Windows.Forms.ToolStripButton();
+            this.tstSair = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errError)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -94,59 +91,10 @@
             this.toolStrip1.TabIndex = 21;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tstSalvar
-            // 
-            this.tstSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tstSalvar.Image = ((System.Drawing.Image)(resources.GetObject("tstSalvar.Image")));
-            this.tstSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tstSalvar.Name = "tstSalvar";
-            this.tstSalvar.Size = new System.Drawing.Size(42, 36);
-            this.tstSalvar.Text = "&Salvar";
-            this.tstSalvar.Click += new System.EventHandler(this.tstSalvar_Click);
-            // 
-            // tstExcluir
-            // 
-            this.tstExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tstExcluir.Image = ((System.Drawing.Image)(resources.GetObject("tstExcluir.Image")));
-            this.tstExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tstExcluir.Name = "tstExcluir";
-            this.tstExcluir.Size = new System.Drawing.Size(45, 36);
-            this.tstExcluir.Text = "&Excluir";
-            this.tstExcluir.Click += new System.EventHandler(this.tstExcluir_Click);
-            // 
-            // tstPesquisar
-            // 
-            this.tstPesquisar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tstPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("tstPesquisar.Image")));
-            this.tstPesquisar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tstPesquisar.Name = "tstPesquisar";
-            this.tstPesquisar.Size = new System.Drawing.Size(61, 36);
-            this.tstPesquisar.Text = "&Pesquisar";
-            this.tstPesquisar.Click += new System.EventHandler(this.tstPesquisar_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
-            // tstSair
-            // 
-            this.tstSair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tstSair.Image = ((System.Drawing.Image)(resources.GetObject("tstSair.Image")));
-            this.tstSair.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tstSair.Name = "tstSair";
-            this.tstSair.Size = new System.Drawing.Size(30, 36);
-            this.tstSair.Text = "S&air";
-            this.tstSair.Click += new System.EventHandler(this.tstSair_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // errError
             // 
@@ -247,9 +195,6 @@
             // 
             // grpClientes
             // 
-            this.grpClientes.Controls.Add(this.btnValidar);
-            this.grpClientes.Controls.Add(this.mskCPF);
-            this.grpClientes.Controls.Add(this.lblCPF);
             this.grpClientes.Controls.Add(this.txtNome);
             this.grpClientes.Controls.Add(this.btnCEP);
             this.grpClientes.Controls.Add(this.label2);
@@ -282,19 +227,9 @@
             this.txtNome.Location = new System.Drawing.Point(117, 57);
             this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(462, 24);
+            this.txtNome.Size = new System.Drawing.Size(646, 24);
             this.txtNome.TabIndex = 1;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
-            // 
-            // btnCEP
-            // 
-            this.btnCEP.Image = global::Dados_do_Cliente.Properties.Resources.Pesquisa;
-            this.btnCEP.Location = new System.Drawing.Point(116, 112);
-            this.btnCEP.Name = "btnCEP";
-            this.btnCEP.Size = new System.Drawing.Size(35, 26);
-            this.btnCEP.TabIndex = 3;
-            this.btnCEP.UseVisualStyleBackColor = true;
-            this.btnCEP.Click += new System.EventHandler(this.btnCEP_Click_1);
             // 
             // label2
             // 
@@ -463,33 +398,64 @@
             this.txtNumero.Size = new System.Drawing.Size(78, 24);
             this.txtNumero.TabIndex = 5;
             // 
-            // lblCPF
+            // btnCEP
             // 
-            this.lblCPF.AutoSize = true;
-            this.lblCPF.Location = new System.Drawing.Point(582, 35);
-            this.lblCPF.Name = "lblCPF";
-            this.lblCPF.Size = new System.Drawing.Size(41, 18);
-            this.lblCPF.TabIndex = 18;
-            this.lblCPF.Text = "CPF";
+            this.btnCEP.Image = global::Dados_do_Cliente.Properties.Resources.Pesquisa;
+            this.btnCEP.Location = new System.Drawing.Point(116, 112);
+            this.btnCEP.Name = "btnCEP";
+            this.btnCEP.Size = new System.Drawing.Size(35, 26);
+            this.btnCEP.TabIndex = 3;
+            this.btnCEP.UseVisualStyleBackColor = true;
+            this.btnCEP.Click += new System.EventHandler(this.btnCEP_Click_1);
             // 
-            // mskCPF
+            // tstSalvar
             // 
-            this.mskCPF.Location = new System.Drawing.Point(585, 57);
-            this.mskCPF.Mask = "000.000.000-10";
-            this.mskCPF.Name = "mskCPF";
-            this.mskCPF.Size = new System.Drawing.Size(137, 24);
-            this.mskCPF.TabIndex = 19;
-            this.mskCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskCPF_MaskInputRejected);
+            this.tstSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tstSalvar.Image = ((System.Drawing.Image)(resources.GetObject("tstSalvar.Image")));
+            this.tstSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tstSalvar.Name = "tstSalvar";
+            this.tstSalvar.Size = new System.Drawing.Size(42, 36);
+            this.tstSalvar.Text = "&Salvar";
+            this.tstSalvar.Click += new System.EventHandler(this.tstSalvar_Click);
             // 
-            // btnValidar
+            // tstExcluir
             // 
-            this.btnValidar.Location = new System.Drawing.Point(728, 56);
-            this.btnValidar.Name = "btnValidar";
-            this.btnValidar.Size = new System.Drawing.Size(75, 23);
-            this.btnValidar.TabIndex = 20;
-            this.btnValidar.Text = "Validar";
-            this.btnValidar.UseVisualStyleBackColor = true;
-            this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
+            this.tstExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tstExcluir.Image = ((System.Drawing.Image)(resources.GetObject("tstExcluir.Image")));
+            this.tstExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tstExcluir.Name = "tstExcluir";
+            this.tstExcluir.Size = new System.Drawing.Size(45, 36);
+            this.tstExcluir.Text = "&Excluir";
+            this.tstExcluir.Click += new System.EventHandler(this.tstExcluir_Click);
+            // 
+            // tstPesquisar
+            // 
+            this.tstPesquisar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tstPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("tstPesquisar.Image")));
+            this.tstPesquisar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tstPesquisar.Name = "tstPesquisar";
+            this.tstPesquisar.Size = new System.Drawing.Size(61, 36);
+            this.tstPesquisar.Text = "&Pesquisar";
+            this.tstPesquisar.Click += new System.EventHandler(this.tstPesquisar_Click);
+            // 
+            // tstSair
+            // 
+            this.tstSair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tstSair.Image = ((System.Drawing.Image)(resources.GetObject("tstSair.Image")));
+            this.tstSair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tstSair.Name = "tstSair";
+            this.tstSair.Size = new System.Drawing.Size(30, 36);
+            this.tstSair.Text = "S&air";
+            this.tstSair.Click += new System.EventHandler(this.tstSair_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // frmAgenda
             // 
@@ -556,9 +522,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboOpcao;
-        private System.Windows.Forms.MaskedTextBox mskCPF;
-        private System.Windows.Forms.Label lblCPF;
-        private System.Windows.Forms.Button btnValidar;
     }
 }
 
