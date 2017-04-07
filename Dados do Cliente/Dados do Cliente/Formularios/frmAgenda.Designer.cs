@@ -47,6 +47,9 @@
             this.cboOpcao = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpClientes = new System.Windows.Forms.GroupBox();
+            this.btnValidar = new System.Windows.Forms.Button();
+            this.mskCPF = new System.Windows.Forms.MaskedTextBox();
+            this.lblCPF = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnCEP = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,9 +69,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.lblCPF = new System.Windows.Forms.Label();
-            this.mskCPF = new System.Windows.Forms.MaskedTextBox();
-            this.btnValidar = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errError)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -276,6 +276,34 @@
             this.grpClientes.TabIndex = 22;
             this.grpClientes.TabStop = false;
             // 
+            // btnValidar
+            // 
+            this.btnValidar.Location = new System.Drawing.Point(728, 56);
+            this.btnValidar.Name = "btnValidar";
+            this.btnValidar.Size = new System.Drawing.Size(75, 23);
+            this.btnValidar.TabIndex = 20;
+            this.btnValidar.Text = "Validar";
+            this.btnValidar.UseVisualStyleBackColor = true;
+            this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
+            // 
+            // mskCPF
+            // 
+            this.mskCPF.Location = new System.Drawing.Point(585, 57);
+            this.mskCPF.Mask = "000.000.000-00";
+            this.mskCPF.Name = "mskCPF";
+            this.mskCPF.Size = new System.Drawing.Size(137, 24);
+            this.mskCPF.TabIndex = 19;
+            this.mskCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskCPF_MaskInputRejected);
+            // 
+            // lblCPF
+            // 
+            this.lblCPF.AutoSize = true;
+            this.lblCPF.Location = new System.Drawing.Point(582, 35);
+            this.lblCPF.Name = "lblCPF";
+            this.lblCPF.Size = new System.Drawing.Size(41, 18);
+            this.lblCPF.TabIndex = 18;
+            this.lblCPF.Text = "CPF";
+            // 
             // txtNome
             // 
             this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -462,34 +490,6 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(78, 24);
             this.txtNumero.TabIndex = 5;
-            // 
-            // lblCPF
-            // 
-            this.lblCPF.AutoSize = true;
-            this.lblCPF.Location = new System.Drawing.Point(582, 35);
-            this.lblCPF.Name = "lblCPF";
-            this.lblCPF.Size = new System.Drawing.Size(41, 18);
-            this.lblCPF.TabIndex = 18;
-            this.lblCPF.Text = "CPF";
-            // 
-            // mskCPF
-            // 
-            this.mskCPF.Location = new System.Drawing.Point(585, 57);
-            this.mskCPF.Mask = "000.000.000-10";
-            this.mskCPF.Name = "mskCPF";
-            this.mskCPF.Size = new System.Drawing.Size(137, 24);
-            this.mskCPF.TabIndex = 19;
-            this.mskCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskCPF_MaskInputRejected);
-            // 
-            // btnValidar
-            // 
-            this.btnValidar.Location = new System.Drawing.Point(728, 56);
-            this.btnValidar.Name = "btnValidar";
-            this.btnValidar.Size = new System.Drawing.Size(75, 23);
-            this.btnValidar.TabIndex = 20;
-            this.btnValidar.Text = "Validar";
-            this.btnValidar.UseVisualStyleBackColor = true;
-            this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
             // 
             // frmAgenda
             // 
