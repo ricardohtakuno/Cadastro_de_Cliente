@@ -179,11 +179,6 @@ namespace Dados_do_Cliente.Formularios
             dgvProdutos.AlternatingRowsDefaultCellStyle.BackColor = Color.Green;
         }
 
-        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvProdutos_DoubleClick(object sender, EventArgs e)
         {
             //verifica se existe itens na grid
@@ -213,11 +208,6 @@ namespace Dados_do_Cliente.Formularios
             drReader.Close();
         }
 
-        private void tstPesquisar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmProduto_Load(object sender, EventArgs e)
         {
             //chama o método pesquisar
@@ -231,11 +221,6 @@ namespace Dados_do_Cliente.Formularios
                 e.Handled = true;
                 SendKeys.Send("{TAB}");
             }
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

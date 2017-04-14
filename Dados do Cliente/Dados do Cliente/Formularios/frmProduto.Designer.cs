@@ -115,7 +115,6 @@ namespace Dados_do_Cliente.Formularios
             this.tstPesquisar.Name = "tstPesquisar";
             this.tstPesquisar.Size = new System.Drawing.Size(61, 22);
             this.tstPesquisar.Text = "&Pesquisar";
-            this.tstPesquisar.Click += new System.EventHandler(this.tstPesquisar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -160,7 +159,6 @@ namespace Dados_do_Cliente.Formularios
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pesquisar";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // dgvProdutos
             // 
@@ -169,6 +167,7 @@ namespace Dados_do_Cliente.Formularios
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.Size = new System.Drawing.Size(827, 161);
             this.dgvProdutos.TabIndex = 4;
+            
             this.dgvProdutos.DoubleClick += new System.EventHandler(this.dgvProdutos_DoubleClick);
             // 
             // label10
@@ -244,7 +243,7 @@ namespace Dados_do_Cliente.Formularios
             this.grpProdutos.Size = new System.Drawing.Size(777, 213);
             this.grpProdutos.TabIndex = 1;
             this.grpProdutos.TabStop = false;
-            this.grpProdutos.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // label9
             // 
@@ -400,10 +399,7 @@ namespace Dados_do_Cliente.Formularios
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         #endregion
 

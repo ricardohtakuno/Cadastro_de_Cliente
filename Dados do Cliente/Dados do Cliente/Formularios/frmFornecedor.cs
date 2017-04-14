@@ -19,11 +19,6 @@ namespace Dados_do_Cliente.Formularios
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tstSalvar_Click(object sender, EventArgs e)
         {
             //validação do conteúdo

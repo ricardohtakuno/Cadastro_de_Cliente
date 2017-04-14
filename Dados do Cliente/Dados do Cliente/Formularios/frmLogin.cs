@@ -32,7 +32,7 @@ namespace Dados_do_Cliente.Formularios
             bool Fornecedores;
 
             //verifica se o nome do usuário foi digitado
-            if (txtUsuario.Text == "")
+            if (txtUsuario.Text == "")  
             {
                 MessageBox.Show("Nome do Usuário Inválido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtUsuario.Focus();
@@ -101,11 +101,6 @@ namespace Dados_do_Cliente.Formularios
 
             //fecha o DataReader
             drReader.Close();
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

@@ -87,9 +87,5 @@ namespace Dados_do_Cliente.Formularios
             frmFornecedor.Show();
         }
 
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

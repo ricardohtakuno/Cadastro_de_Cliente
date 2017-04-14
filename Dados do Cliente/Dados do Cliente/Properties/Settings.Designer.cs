@@ -26,8 +26,8 @@ namespace Dados_do_Cliente.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AME0556344W10-1\\SQLEXPRESS;Initial Catalog=Dados;Integrated Security=" +
-            "True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AME0556344W10-1\\SQLEXPRESS;Initial Catalog=Dados;User ID=sa;Password=" +
+            "aluno123")]
         public string conexaoDB {
             get {
                 return ((string)(this["conexaoDB"]));

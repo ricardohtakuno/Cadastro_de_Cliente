@@ -40,11 +40,6 @@ namespace Dados_do_Cliente
             }
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
         private void tstSair_Click(object sender, EventArgs e)
         {
             Close();
@@ -185,16 +180,6 @@ namespace Dados_do_Cliente
             }
         }
 
-        private void tstPesquisar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboOpcao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             //chama o método pesquisar
@@ -259,53 +244,8 @@ namespace Dados_do_Cliente
                 txtNome.Focus();
             }
             drReader.Close();
-        }
-
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblNome_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodigo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboOpcao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCEP_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mskCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
+        }   
+        
         private void btnValidar_Click(object sender, EventArgs e)
         {
             string mensagem = "";
@@ -320,5 +260,6 @@ namespace Dados_do_Cliente
             }
             MessageBox.Show(mensagem, "Validação");
         }
+
     }
 }

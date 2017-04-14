@@ -432,7 +432,7 @@
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Código";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            
             // 
             // txtCodigo
             // 

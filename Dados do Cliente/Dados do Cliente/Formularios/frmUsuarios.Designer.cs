@@ -48,6 +48,7 @@ namespace Dados_do_Cliente.Formularios
             this.cboOpcao3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpUsuarios = new System.Windows.Forms.GroupBox();
+            this.chkbFornecedores = new System.Windows.Forms.CheckBox();
             this.chkbUsuarios = new System.Windows.Forms.CheckBox();
             this.lblCodigo3 = new System.Windows.Forms.Label();
             this.chkbClientes = new System.Windows.Forms.CheckBox();
@@ -58,7 +59,6 @@ namespace Dados_do_Cliente.Formularios
             this.chkbProdutos = new System.Windows.Forms.CheckBox();
             this.txtCodigo3 = new System.Windows.Forms.TextBox();
             this.errError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.chkbFornecedores = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -168,6 +168,7 @@ namespace Dados_do_Cliente.Formularios
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.Size = new System.Drawing.Size(842, 150);
             this.dgvUsuarios.TabIndex = 4;
+            
             this.dgvUsuarios.DoubleClick += new System.EventHandler(this.dgvUsuarios_DoubleClick);
             // 
             // label2
@@ -238,6 +239,16 @@ namespace Dados_do_Cliente.Formularios
             this.grpUsuarios.TabIndex = 2;
             this.grpUsuarios.TabStop = false;
             this.grpUsuarios.Text = "Dados do Usuário";
+            // 
+            // chkbFornecedores
+            // 
+            this.chkbFornecedores.AutoSize = true;
+            this.chkbFornecedores.Location = new System.Drawing.Point(370, 201);
+            this.chkbFornecedores.Name = "chkbFornecedores";
+            this.chkbFornecedores.Size = new System.Drawing.Size(91, 17);
+            this.chkbFornecedores.TabIndex = 9;
+            this.chkbFornecedores.Text = "Fornecedores";
+            this.chkbFornecedores.UseVisualStyleBackColor = true;
             // 
             // chkbUsuarios
             // 
@@ -321,16 +332,6 @@ namespace Dados_do_Cliente.Formularios
             // errError
             // 
             this.errError.ContainerControl = this;
-            // 
-            // chkbFornecedores
-            // 
-            this.chkbFornecedores.AutoSize = true;
-            this.chkbFornecedores.Location = new System.Drawing.Point(370, 201);
-            this.chkbFornecedores.Name = "chkbFornecedores";
-            this.chkbFornecedores.Size = new System.Drawing.Size(91, 17);
-            this.chkbFornecedores.TabIndex = 9;
-            this.chkbFornecedores.Text = "Fornecedores";
-            this.chkbFornecedores.UseVisualStyleBackColor = true;
             // 
             // frmUsuarios
             // 
