@@ -68,6 +68,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.errError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.mskCPF = new System.Windows.Forms.MaskedTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnValidar = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -230,6 +233,9 @@
             // 
             // grpFornecedor
             // 
+            this.grpFornecedor.Controls.Add(this.btnValidar);
+            this.grpFornecedor.Controls.Add(this.label12);
+            this.grpFornecedor.Controls.Add(this.mskCPF);
             this.grpFornecedor.Controls.Add(this.label4);
             this.grpFornecedor.Controls.Add(this.txtNumero);
             this.grpFornecedor.Controls.Add(this.btnCEP);
@@ -297,7 +303,7 @@
             this.txtNomeDoContato.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeDoContato.Location = new System.Drawing.Point(24, 104);
             this.txtNomeDoContato.Name = "txtNomeDoContato";
-            this.txtNomeDoContato.Size = new System.Drawing.Size(748, 20);
+            this.txtNomeDoContato.Size = new System.Drawing.Size(521, 20);
             this.txtNomeDoContato.TabIndex = 2;
             // 
             // label11
@@ -432,7 +438,6 @@
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Código";
-            
             // 
             // txtCodigo
             // 
@@ -446,6 +451,33 @@
             // errError
             // 
             this.errError.ContainerControl = this;
+            // 
+            // mskCPF
+            // 
+            this.mskCPF.Location = new System.Drawing.Point(561, 103);
+            this.mskCPF.Mask = "000.000.000-00";
+            this.mskCPF.Name = "mskCPF";
+            this.mskCPF.Size = new System.Drawing.Size(126, 20);
+            this.mskCPF.TabIndex = 23;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(558, 88);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(27, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "CPF";
+            // 
+            // btnValidar
+            // 
+            this.btnValidar.Location = new System.Drawing.Point(702, 101);
+            this.btnValidar.Name = "btnValidar";
+            this.btnValidar.Size = new System.Drawing.Size(75, 23);
+            this.btnValidar.TabIndex = 25;
+            this.btnValidar.Text = "Validar";
+            this.btnValidar.UseVisualStyleBackColor = true;
+            this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
             // 
             // frmFornecedor
             // 
@@ -513,5 +545,8 @@
         private System.Windows.Forms.ErrorProvider errError;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.MaskedTextBox mskCPF;
+        private System.Windows.Forms.Button btnValidar;
     }
 }

@@ -139,5 +139,20 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
+        public SqlDataReader PesquisarCPF(string CPF)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbClientes ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" CPF = " + CPF);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace Negocio
         public string Estado { get; set; }
         public string CEP { get; set; }
         public string Telefone { get; set; }
+        public string CPF { get; set; }
         public void Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
@@ -41,6 +42,7 @@ namespace Negocio
             strQuery.Append(", Estado ");
             strQuery.Append(", CEP ");
             strQuery.Append(", Telefone ");
+            strQuery.Append(", CPF ");
 
             strQuery.Append(" ) ");
 
@@ -55,6 +57,7 @@ namespace Negocio
             strQuery.Append(",'" + Estado + "'");
             strQuery.Append(",'" + CEP + "'");
             strQuery.Append(",'" + Telefone + "'");
+            strQuery.Append(",'" + CPF + "'");
 
             strQuery.Append(" ); ");
 
@@ -81,6 +84,7 @@ namespace Negocio
             strQuery.Append(", Estado = '" + Estado + "'");
             strQuery.Append(", Cep = '" + CEP + "'");
             strQuery.Append(", Telefone = '" + Telefone + "'");
+            strQuery.Append(", CPF = '" + CPF + "'");
 
             strQuery.Append(" WHERE ");
 

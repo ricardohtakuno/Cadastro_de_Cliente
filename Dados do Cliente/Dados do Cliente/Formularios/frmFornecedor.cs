@@ -48,10 +48,12 @@ namespace Dados_do_Cliente.Formularios
             clFornecedores.NomeDoContato = txtNomeDoContato.Text;
             clFornecedores.Endereco = txtEndereco.Text;
             clFornecedores.Bairro = txtBairro.Text;
+            clFornecedores.Numero = txtNumero.Text;
             clFornecedores.Cidade = txtCidade.Text;
             clFornecedores.Estado = cboEstado.Text;
             clFornecedores.CEP = mskCEP.Text;
             clFornecedores.Telefone = mskTelefone.Text;
+            clFornecedores.CPF = mskCPF.Text;
 
             //variável com a string de conexão com o banco
             clFornecedores.banco = Properties.Settings.Default.conexaoDB;
@@ -218,6 +220,7 @@ namespace Dados_do_Cliente.Formularios
                 //transfere os dados do banco de dados para os campos do formulário
                 txtCodigo.Text = drReader["CodigoFornecedor"].ToString();
                 txtNomeDaEmpresa.Text = drReader["NomeDaEmpresa"].ToString();
+                txtNomeDoContato.Text = drReader["NomeDoContato"].ToString();
                 txtEndereco.Text = drReader["Endereco"].ToString();
                 txtNumero.Text = drReader["Numero"].ToString();
                 txtBairro.Text = drReader["Bairro"].ToString();
@@ -225,6 +228,7 @@ namespace Dados_do_Cliente.Formularios
                 cboEstado.Text = drReader["Estado"].ToString();
                 mskCEP.Text = drReader["CEP"].ToString();
                 mskTelefone.Text = drReader["Telefone"].ToString();
+                mskCPF.Text = drReader["CPF"].ToString();
 
                 //habilita o frame e envia o cursor para o campo nome
                 tabControl1.SelectedTab = tabPage2;
@@ -242,6 +246,21 @@ namespace Dados_do_Cliente.Formularios
         private void btnCEP_Click(object sender, EventArgs e)
         {
             PesquisarCEP(mskCEP.Text);
+        }
+
+        private void btnValidar_Click(object sender, EventArgs e)
+        {
+            string mensagem = "";
+            string valor = mskCPF.Text;
+            if (ValidaçãoCPF.IsCpf(valor))
+            {
+                mensagem = "O número é um CPF válido!";
+            }
+            else
+            {
+                mensagem = "O número é um CPF invalido!";
+            }
+            MessageBox.Show(mensagem, "Validação");
         }
     }
 }

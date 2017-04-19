@@ -94,6 +94,18 @@ namespace Dados_do_Cliente
                 clClientes.Alterar();
             }
 
+            //chama o método gravar CPF
+            string mensagem = "";
+            if(mskCPF.Text == "")
+            {
+                clClientes.Gravar();
+            }
+            else
+            {
+                mensagem = "O número de CPF ja esta cadastrado!";
+            }
+            MessageBox.Show(mensagem, "Atenção");
+
             //atualiza o datagridview
             Pesquisar();
 
@@ -238,6 +250,7 @@ namespace Dados_do_Cliente
                 cboEstado.Text = drReader["cliEstado"].ToString();
                 mskCEP.Text = drReader["cliCEP"].ToString();
                 mskCelular.Text = drReader["cliCelular"].ToString();
+                mskCPF.Text = drReader["cliCPF"].ToString();
 
                 //habilita o frame e envia o cursor para o campo nome
                 tabControl1.SelectedTab = tabPage2;
