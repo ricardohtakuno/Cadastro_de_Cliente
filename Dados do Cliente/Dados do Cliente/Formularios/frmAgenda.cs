@@ -58,6 +58,19 @@ namespace Dados_do_Cliente
                 errError.SetError(lblNome, "");
             }
 
+            //carrega a tela com todos os dados do cliente
+            SqlDataReader drReader;
+            clClientes clClientes = new clClientes();
+            clClientes.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clClientes.PesquisarCPF(mskCPF.Text);
+
+            if (drReader.Read())
+            {
+                MessageBox.Show("CPF ja esta cadastrado!");
+                return;
+            }
+            drReader.Close();
+
             //pergunta para o usuário se ele confirma a inclusão do cadastro
             DialogResult resposta;
             resposta = MessageBox.Show("Confirma a inclusão/alteração?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -65,9 +78,6 @@ namespace Dados_do_Cliente
             {
                 return;
             }
-
-            //instancia a classe de negócio
-            clClientes clClientes = new clClientes();
 
             //carrega as propriedades
             clClientes.cliNome = txtNome.Text;
@@ -93,18 +103,6 @@ namespace Dados_do_Cliente
                 clClientes.cliCodigo = Convert.ToInt32(txtCodigo.Text);
                 clClientes.Alterar();
             }
-
-            //chama o método gravar CPF
-            string mensagem = "";
-            if(mskCPF.Text == "")
-            {
-                clClientes.Gravar();
-            }
-            else
-            {
-                mensagem = "O número de CPF ja esta cadastrado!";
-            }
-            MessageBox.Show(mensagem, "Atenção");
 
             //atualiza o datagridview
             Pesquisar();

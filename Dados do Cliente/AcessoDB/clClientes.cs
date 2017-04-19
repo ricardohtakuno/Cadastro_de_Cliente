@@ -147,7 +147,7 @@ namespace Negocio
             strQuery.Append(" SELECT * ");
             strQuery.Append(" FROM tbClientes ");
             strQuery.Append(" WHERE ");
-            strQuery.Append(" CPF = " + CPF);
+            strQuery.Append(" cliCPF = '" + CPF + "'");
 
             //executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();
