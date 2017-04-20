@@ -32,6 +32,19 @@ namespace Dados_do_Cliente.Formularios
                 errError.SetError(lblNomeDaEmpresa, "");
             }
 
+            //carrega a tela com todos os dados do cliente
+            SqlDataReader drReader;
+            clClientes clClientes = new clClientes();
+            clClientes.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clClientes.PesquisarCPF(mskCPF.Text);
+
+            if (drReader.Read())
+            {
+                MessageBox.Show("CPF ja esta cadastrado!");
+                return;
+            }
+            drReader.Close();
+
             //pergunta para o usuário se ele confirma a inclusão do cadastro
             DialogResult resposta;
             resposta = MessageBox.Show("Confirma a inclusão/alteração?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -39,9 +52,6 @@ namespace Dados_do_Cliente.Formularios
             {
                 return;
             }
-
-            //instancia a classe de negócio
-            clFornecedores clFornecedores = new clFornecedores();
 
             //carrega as propriedades
             clFornecedores.NomeDaEmpresa = txtNomeDaEmpresa.Text;
