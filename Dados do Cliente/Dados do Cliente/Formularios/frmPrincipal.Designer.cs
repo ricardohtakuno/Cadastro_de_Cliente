@@ -33,9 +33,10 @@
             this.mnuAgenda = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProdutos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGerais = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFornecedores = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSair = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFornecedores = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.mnuAgenda,
             this.mnuProdutos,
             this.mnuUsuarios,
+            this.mnuGerais,
             this.mnuFornecedores,
             this.toolStripMenuItem1,
             this.mnuSair});
@@ -83,6 +85,20 @@
             this.mnuUsuarios.Text = "Usuários";
             this.mnuUsuarios.Click += new System.EventHandler(this.mnuUsuarios_Click);
             // 
+            // mnuGerais
+            // 
+            this.mnuGerais.Name = "mnuGerais";
+            this.mnuGerais.Size = new System.Drawing.Size(152, 22);
+            this.mnuGerais.Text = "Gerais";
+            this.mnuGerais.Click += new System.EventHandler(this.mnuGerais_Click);
+            // 
+            // mnuFornecedores
+            // 
+            this.mnuFornecedores.Name = "mnuFornecedores";
+            this.mnuFornecedores.Size = new System.Drawing.Size(152, 22);
+            this.mnuFornecedores.Text = "Fornecedores";
+            this.mnuFornecedores.Click += new System.EventHandler(this.mnuFornecedores_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -94,13 +110,6 @@
             this.mnuSair.Size = new System.Drawing.Size(152, 22);
             this.mnuSair.Text = "&Sair";
             this.mnuSair.Click += new System.EventHandler(this.mnuSair_Click);
-            // 
-            // mnuFornecedores
-            // 
-            this.mnuFornecedores.Name = "mnuFornecedores";
-            this.mnuFornecedores.Size = new System.Drawing.Size(152, 22);
-            this.mnuFornecedores.Text = "Fornecedores";
-            this.mnuFornecedores.Click += new System.EventHandler(this.mnuFornecedores_Click);
             // 
             // frmPrincipal
             // 
@@ -115,7 +124,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmPrincipal_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
-            
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -133,5 +141,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSair;
         private System.Windows.Forms.ToolStripMenuItem mnuUsuarios;
         private System.Windows.Forms.ToolStripMenuItem mnuFornecedores;
+        private System.Windows.Forms.ToolStripMenuItem mnuGerais;
     }
 }

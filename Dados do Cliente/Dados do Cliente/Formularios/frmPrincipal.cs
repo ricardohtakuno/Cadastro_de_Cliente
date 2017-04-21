@@ -87,5 +87,13 @@ namespace Dados_do_Cliente.Formularios
             frmFornecedor.Show();
         }
 
+        private void mnuGerais_Click(object sender, EventArgs e)
+        {
+            //abre o formulário Usuários
+            //utilizando formulário MDI
+            Form frmGerais = new frmGerais();
+            frmGerais.MdiParent = this;
+            frmGerais.Show();
+        }
     }
 }

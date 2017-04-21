@@ -154,5 +154,33 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
+        public SqlDataReader CarregarClientes()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT cliNome ");
+            strQuery.Append(" FROM tbClientes ");
+            strQuery.Append(" ORDER BY cliNome ");
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
+        public SqlDataReader PesquisarEndereco(string cliNome)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT cliEndereco ");
+            strQuery.Append(" FROM tbClientes ");
+            strQuery.Append(" WHERE cliNome = '" + cliNome + "'");
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
     }
 }

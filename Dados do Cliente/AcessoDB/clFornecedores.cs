@@ -143,15 +143,15 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
-        public SqlDataAdapter PesquisarCPF(string CPF)
+        public SqlDataReader PesquisarCPF(string CPF)
         {
             StringBuilder strQuery = new StringBuilder();
 
             //montagem do select
             strQuery.Append(" SELECT * ");
-            strQuery.Append(" FROM tbClientes ");
+            strQuery.Append(" FROM tbFornecedores ");
             strQuery.Append(" WHERE ");
-            strQuery.Append(" cliCPF = '" + CPF + "'");
+            strQuery.Append(" CPF = '" + CPF + "'");
 
             //executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();

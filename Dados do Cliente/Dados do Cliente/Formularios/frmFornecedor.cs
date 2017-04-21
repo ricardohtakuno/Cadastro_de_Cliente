@@ -34,9 +34,9 @@ namespace Dados_do_Cliente.Formularios
 
             //carrega a tela com todos os dados do cliente
             SqlDataReader drReader;
-            clClientes clClientes = new clClientes();
-            clClientes.banco = Properties.Settings.Default.conexaoDB;
-            drReader = clClientes.PesquisarCPF(mskCPF.Text);
+            clFornecedores clFornecedores = new clFornecedores();
+            clFornecedores.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clFornecedores.PesquisarCPF(mskCPF.Text);
 
             if (drReader.Read())
             {
