@@ -117,15 +117,16 @@ namespace Dados_do_Cliente
         {
             //pesquisa de CEP
             DataSet ds = new DataSet();
+            clGerais clGerais = new clGerais();
 
             string xml = "http://cep.republicavirtual.com.br/web_cep.php?cep=@cep&formato=xml".Replace("@cep", CEP);
             ds.ReadXml(xml);
             if (ds.Tables[0].Rows[0]["resultado_txt"].ToString() == "sucesso - cep completo" || ds.Tables[0].Rows[0]["resultado_txt"].ToString() == "sucesso - cep único")
             {
-                txtEndereco.Text = ds.Tables[0].Rows[0]["tipo_logradouro"].ToString() + " " + ds.Tables[0].Rows[0]["logradouro"].ToString();
-                txtBairro.Text = ds.Tables[0].Rows[0]["bairro"].ToString();
-                txtCidade.Text = ds.Tables[0].Rows[0]["cidade"].ToString();
-                cboEstado.Text = ds.Tables[0].Rows[0]["uf"].ToString();
+                txtEndereco.Text = clGerais.RemoveAcentos(ds.Tables[0].Rows[0]["tipo_logradouro"].ToString() + " " + ds.Tables[0].Rows[0]["logradouro"].ToString());
+                txtBairro.Text = clGerais.RemoveAcentos(ds.Tables[0].Rows[0]["bairro"].ToString());
+                txtCidade.Text = clGerais.RemoveAcentos(ds.Tables[0].Rows[0]["cidade"].ToString());
+                cboEstado.Text = clGerais.RemoveAcentos(ds.Tables[0].Rows[0]["uf"].ToString());
                 txtNumero.Focus();
             }
             else

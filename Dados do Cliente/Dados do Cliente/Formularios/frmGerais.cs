@@ -62,5 +62,11 @@ namespace Dados_do_Cliente.Formularios
             //fecha o dataReader
             drReader.Close();
         }
+
+        private void btnProcessar_Click(object sender, EventArgs e)
+        {
+            clGerais clGerais = new clGerais();
+            txtTexto.Text = clGerais.RemoveAcentos(txtTexto.Text);
+        }
     }
 }

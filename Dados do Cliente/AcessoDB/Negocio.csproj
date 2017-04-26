@@ -43,6 +43,7 @@
     <Compile Include="clAcessoDB.cs" />
     <Compile Include="clClientes.cs" />
     <Compile Include="clFornecedores.cs" />
+    <Compile Include="clGerais.cs" />
     <Compile Include="clProduto.cs" />
     <Compile Include="clUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
