@@ -93,7 +93,12 @@ namespace Dados_do_Cliente
             //variável com a string de conexão com o banco
             clClientes.banco = Properties.Settings.Default.conexaoDB;
 
-            //chama o método gravar
+            //F10 continua a execução na mesma janela de código
+            //F11 desvia a execução para as classes se houver
+            //F5 executa o restante do código
+            // breakpoint
+
+            //chama o método gravar ou alterar
             if (txtCodigo.Text == "")
             {
                 clClientes.Gravar();
