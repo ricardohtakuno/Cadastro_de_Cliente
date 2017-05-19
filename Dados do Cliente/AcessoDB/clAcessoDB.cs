@@ -124,5 +124,40 @@ namespace Negocio
                 throw ex;
             }
         }
+        public int ExecutaComandoRetorno(string strQuery)
+        {
+            //cria o objeto de conexão
+            SqlConnection conn = new SqlConnection();
+            //declara um novo datareader
+            SqlDataReader dr;
+            try
+            {
+                //abre a conexão com o banco de dados
+                conn = AbreBanco();
+                //cria o objeto de comando
+                SqlCommand cmdComando = new SqlCommand();
+                cmdComando.CommandText = strQuery;
+                cmdComando.CommandType = CommandType.Text;
+                cmdComando.Connection = conn;
+                cmdComando.ExecuteNonQuery();
+                //cria uma nova query, que busca o valor de identity gerado pelo banco de dados
+                cmdComando.CommandText = "Select @@Identity;";
+                dr = cmdComando.ExecuteReader(CommandBehavior.CloseConnection);
+                //lê o datareader
+                dr.Read();
+                //retorna o valor
+                return Convert.ToInt32(dr.GetValue(0));
+                //tratamento de exeções
+            }
+            catch(System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                //em caso de erro ou não, o finally e executado para fechar a conexão com o banco de dados
+                FechaBanco(conn);
+            }
+        }
     }
 }

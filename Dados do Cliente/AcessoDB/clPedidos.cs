@@ -13,7 +13,7 @@ namespace Negocio
         public int ID_Pedido { get; set; }
         public string Data { get; set; }
         public int Cliente { get; set; }
-        public void Gravar()
+        public int Gravar()
         {
             //variável utilizada para "concatenar" texto de forma estruturada
             StringBuilder strQuery = new StringBuilder();
@@ -38,7 +38,7 @@ namespace Negocio
             //instancia a classe clAcessoDB e executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();
             clAcessoDB.vConexao = banco;
-            clAcessoDB.ExecutaComando(strQuery.ToString());
+            return clAcessoDB.ExecutaComandoRetorno(strQuery.ToString());
         }
         public void Alterar()
         {

@@ -95,5 +95,14 @@ namespace Dados_do_Cliente.Formularios
             frmGerais.MdiParent = this;
             frmGerais.Show();
         }
+
+        private void mnuPedidos_Click(object sender, EventArgs e)
+        {
+            //abre o formulário Usuários
+            //utilizando formulário MDI
+            Form frmPedidos = new frmPedidos();
+            frmPedidos.MdiParent = this;
+            frmPedidos.Show();
+        }
     }
 }
