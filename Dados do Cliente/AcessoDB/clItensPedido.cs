@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +87,22 @@ namespace Negocio
             clAcessoDB clAcessoDB = new clAcessoDB();
             clAcessoDB.vConexao = banco;
             clAcessoDB.ExecutaComando(strQuery.ToString());
+        }
+        public DataSet Pesquisar(int IDPedido)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT tbItensPedido.ID_Item, tbItensPedido.ID_Produto, tbProdutos.proDescricao, ");
+            strQuery.Append(" tbItensPedido.Quantidade, tbItensPedido.Unitario, tbItensPedido.Subtotal ");
+            strQuery.Append(" FROM tbItensPedido INNER JOIN tbProdutos ");
+            strQuery.Append(" ON tbItensPedido.ID_Produto = tbProdutos.proCodigo ");
+            strQuery.Append(" WHERE WHERE tbItensPedido.ID_Pedido = " + IDPedido);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataSet(strQuery.ToString());
         }
     }
 }

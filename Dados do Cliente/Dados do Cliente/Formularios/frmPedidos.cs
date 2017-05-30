@@ -25,10 +25,10 @@ namespace Dados_do_Cliente.Formularios
             SqlDataReader drReader;
 
             //instancia a classe de clientes
-            clPedidos clPedidos = new clPedidos();
+            clClientes clClientes = new clClientes();
 
             //passa a string de conexao para a classe de clientes
-            clPedidos.banco = Properties.Settings.Default.conexaoDB;
+            clClientes.banco = Properties.Settings.Default.conexaoDB;
 
             //carrega a lista de clientes
             drReader = clClientes.CarregarClientes();
@@ -39,6 +39,194 @@ namespace Dados_do_Cliente.Formularios
 
             //fecha o dataReader
             drReader.Close();
+        }
+
+        private void txtCodProduto_Leave(object sender, EventArgs e)
+        {
+            SqlDataReader drReader;
+
+            //verifica se foi digitado alguma coisa
+            if(txtCodProduto.Text == "")
+            {
+                Limpar();
+                return;
+            }
+
+            //verifica se foi digitado número no código do produto
+            int codProd;
+            if(Int32.TryParse(txtCodProduto.Text, out codProd))
+            {
+                codProd = Convert.ToInt32(txtCodProduto.Text);
+            }
+            else
+            {
+                MessageBox.Show("Digite somente números.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Limpar();
+                txtCodProduto.Focus();
+                return;
+            }
+
+            //verifica se o produto está cadastrado
+            clProduto clProduto = new clProduto();
+            clProduto.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clProduto.PesquisarCodigo(Convert.ToInt32(txtCodProduto.Text));
+            if(drReader.Read())
+            {
+                txtDescricao.Text = drReader["proDescricao"].ToString();
+                txtUnitario.Text = drReader["proPreco"].ToString();
+            }
+            else
+            {
+                Limpar();
+                txtCodProduto.Focus();
+            }
+            drReader.Close();
+        }
+
+        private void btnIncluir_Click(object sender, EventArgs e)
+        {
+            SqlDataReader drReader;
+            int CodigoCliente = 0;
+
+            //verifica se o cliente foi selecionado
+            if (cboClientes.Text == "")
+            {
+                MessageBox.Show("Selecione o Cliente!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cboClientes.Focus();
+                return;
+            }
+
+            //verifica se o produto foi digitado
+            if (txtDescricao.Text == "")
+            {
+                MessageBox.Show("Produto Inválido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            //verifica se o subtotal está zerado
+            if (txtSubtotal.Text == "0,00" || txtSubtotal.Text == "")
+            {
+                MessageBox.Show("SubTotal Inválido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            //instancia as classes
+            clClientes clClientes = new clClientes();
+            clPedidos clPedidos = new clPedidos();
+            clItensPedido clItensPedido = new clItensPedido();
+
+            //verifica se o pedido já foi salvo
+            if (txtCodigo.Text == "")
+            {
+                //Pergunta para o usuário se ele confirma a inclusão do pedido
+                DialogResult resposta;
+                resposta = MessageBox.Show("Confirma a Inclusão do Pedido?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (resposta.Equals(DialogResult.Yes))
+                {
+                    //seleciona o código do cliente
+                    clClientes.banco = Properties.Settings.Default.conexaoDB;
+                    drReader = clClientes.PesquisarEndereco(cboClientes.Text);
+                    if (drReader.Read())
+                    {
+                        CodigoCliente = Convert.ToInt32(drReader["cliCodigo"].ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cliente Inválido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        drReader.Close();
+                        return;
+                    }
+                    drReader.Close();
+
+                    //carrega as propriedades do pedido
+                    clPedidos.banco = Properties.Settings.Default.conexaoDB;
+                    clPedidos.Data = String.Format("{0:yyyy-MM-dd}", dtpData.Value);
+                    clPedidos.Cliente = CodigoCliente;
+                    txtCodigo.Text = Convert.ToString(clPedidos.Gravar());
+
+                    //carrega as propriedades do ítem
+                    clItensPedido.banco = Properties.Settings.Default.conexaoDB;
+                    clItensPedido.ID_Pedido = Convert.ToInt32(txtCodigo.Text);
+                    clItensPedido.ID_Produto = Convert.ToInt32(txtCodProduto.Text);
+                    clItensPedido.Qtde = txtQtde.Text;
+                    clItensPedido.Unitario = txtUnitario.Text;
+                    clItensPedido.Subtotal = txtSubtotal.Text;
+                    clItensPedido.Gravar();
+
+                    //atualiza a lista de itens inseridos
+                    CarregarItens(Convert.ToInt32(txtCodigo.Text));
+
+                    //limpa os campos
+                    Limpar();
+                    txtCodProduto.Focus();
+                }
+                else
+                {
+                    //carrega propriedades do item
+                    clItensPedido.banco = Properties.Settings.Default.conexaoDB;
+                    clItensPedido.ID_Pedido = Convert.ToInt32(txtCodigo.Text);
+                    clItensPedido.ID_Produto = Convert.ToInt32(txtCodProduto.Text);
+                    clItensPedido.Qtde = txtQtde.Text;
+                    clItensPedido.Unitario = txtUnitario.Text;
+                    clItensPedido.Subtotal = txtSubtotal.Text;
+                    clItensPedido.Gravar();
+
+                    //atualiza a lista de itens inseridos
+                    CarregarItens(Convert.ToInt32(txtCodigo.Text));
+
+                    //limpa os campos
+                    Limpar();
+                    txtCodProduto.Focus();
+                }
+            }
+        }
+        public void CarregarItens(int Pedido)
+        {
+            //carrega o datagridview com os itens do pedido
+            clItensPedido clItensPedido = new clItensPedido();
+            clItensPedido.banco = Properties.Settings.Default.conexaoDB;
+            dgvItens.DataSource = clItensPedido.Pesquisar(Pedido).Tables[0];
+
+            //comando utilizado para gerar um efeito "zebrado" no datagridview
+            dgvItens.AlternatingRowsDefaultCellStyle.BackColor = Color.Green;
+        }
+
+        private void tstSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        void Limpar()
+        {
+            //limpa os textbox's
+            txtCodProduto.Text = "";
+            txtDescricao.Text = "";
+            txtUnitario.Text = "";
+            txtQtde.Text = "";
+            txtSubtotal.Text = "";
+        }
+        void SubTotal()
+        {
+            //verifica se a quantidade é numérico
+            int Quantidade;
+            if (!int.TryParse(txtQtde.Text, out Quantidade))
+            {
+                Quantidade = 0;
+            }
+
+            //verifica se o valor unitário é numérico
+            decimal ValorUnitario;
+            if (!decimal.TryParse(txtUnitario.Text, out ValorUnitario))
+            {
+                ValorUnitario = 0;
+            }
+
+            //calcula o subtotal do ítem
+            txtSubtotal.Text = Convert.ToString(Quantidade * ValorUnitario);
+        }
+
+        private void txtQtde_TextChanged(object sender, EventArgs e)
+        {
+            SubTotal();
         }
     }
 }
