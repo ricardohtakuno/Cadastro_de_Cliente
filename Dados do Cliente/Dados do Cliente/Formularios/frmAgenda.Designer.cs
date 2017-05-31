@@ -122,7 +122,6 @@
             this.tstPesquisar.Name = "tstPesquisar";
             this.tstPesquisar.Size = new System.Drawing.Size(61, 36);
             this.tstPesquisar.Text = "&Pesquisar";
-            
             // 
             // toolStripSeparator1
             // 
@@ -188,7 +187,7 @@
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.Size = new System.Drawing.Size(851, 229);
             this.dgvClientes.TabIndex = 5;
-            
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
             this.dgvClientes.DoubleClick += new System.EventHandler(this.dgvClientes_DoubleClick);
             // 
             // txtFiltro
@@ -207,7 +206,6 @@
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Filtro";
-            
             // 
             // label1
             // 
@@ -230,8 +228,6 @@
             this.cboOpcao.Size = new System.Drawing.Size(121, 21);
             this.cboOpcao.TabIndex = 0;
             this.cboOpcao.Text = "NOME";
-            
-            
             // 
             // tabPage2
             // 
@@ -243,7 +239,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dados do Cliente";
             this.tabPage2.UseVisualStyleBackColor = true;
-            
             // 
             // grpClientes
             // 
@@ -293,7 +288,6 @@
             this.mskCPF.Name = "mskCPF";
             this.mskCPF.Size = new System.Drawing.Size(137, 24);
             this.mskCPF.TabIndex = 19;
-            
             // 
             // lblCPF
             // 
@@ -312,7 +306,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(462, 24);
             this.txtNome.TabIndex = 1;
-            
             // 
             // btnCEP
             // 
@@ -350,7 +343,6 @@
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(100, 24);
             this.txtCodigo.TabIndex = 0;
-            
             // 
             // label10
             // 
@@ -414,7 +406,6 @@
             this.mskCEP.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mskCEP.Size = new System.Drawing.Size(100, 24);
             this.mskCEP.TabIndex = 2;
-            
             // 
             // txtCidade
             // 

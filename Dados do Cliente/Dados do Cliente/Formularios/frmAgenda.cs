@@ -278,5 +278,9 @@ namespace Dados_do_Cliente
             MessageBox.Show(mensagem, "Validação");
         }
 
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

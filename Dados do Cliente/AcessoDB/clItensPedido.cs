@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,10 +95,44 @@ namespace Negocio
 
             //montagem do select
             strQuery.Append(" SELECT tbItensPedido.ID_Item, tbItensPedido.ID_Produto, tbProdutos.proDescricao, ");
-            strQuery.Append(" tbItensPedido.Quantidade, tbItensPedido.Unitario, tbItensPedido.Subtotal ");
+            strQuery.Append(" tbItensPedido.Qtde, tbItensPedido.Unitario, tbItensPedido.Subtotal ");
             strQuery.Append(" FROM tbItensPedido INNER JOIN tbProdutos ");
             strQuery.Append(" ON tbItensPedido.ID_Produto = tbProdutos.proCodigo ");
-            strQuery.Append(" WHERE WHERE tbItensPedido.ID_Pedido = " + IDPedido);
+            strQuery.Append(" WHERE tbItensPedido.ID_Pedido = " + IDPedido);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataSet(strQuery.ToString());
+        }
+        public SqlDataReader TotalPedido(int IDPed)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT SUM(SubTotal) Total ");
+            strQuery.Append(" FROM tbItensPedido ");
+            strQuery.Append(" WHERE ID_Pedido " + IDPed);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
+        public DataSet PesquisarPedido(string Campo, string Filtro)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT usrCod Codigo, usrNome Nome, ");
+            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos, usrUsuarios Usuarios, usrFornecedores Fornecedores ");
+            strQuery.Append(" FROM tbUsuarios ");
+            if (Campo != string.Empty && Filtro != string.Empty)
+            {
+                strQuery.Append(" WHERE ");
+                strQuery.Append(Campo + " LIKE '" + "%" + Filtro + "%" + "'");
+            }
+            strQuery.Append(" ORDER BY usrNome ");
 
             //executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();

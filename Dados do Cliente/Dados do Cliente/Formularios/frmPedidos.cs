@@ -125,7 +125,7 @@ namespace Dados_do_Cliente.Formularios
                 {
                     //seleciona o código do cliente
                     clClientes.banco = Properties.Settings.Default.conexaoDB;
-                    drReader = clClientes.PesquisarEndereco(cboClientes.Text);
+                    drReader = clClientes.PesquisarNome(cboClientes.Text);
                     if (drReader.Read())
                     {
                         CodigoCliente = Convert.ToInt32(drReader["cliCodigo"].ToString());
@@ -155,6 +155,9 @@ namespace Dados_do_Cliente.Formularios
 
                     //atualiza a lista de itens inseridos
                     CarregarItens(Convert.ToInt32(txtCodigo.Text));
+
+                    //totaliza o pedido
+                    TotalPedido();
 
                     //limpa os campos
                     Limpar();
@@ -227,6 +230,59 @@ namespace Dados_do_Cliente.Formularios
         private void txtQtde_TextChanged(object sender, EventArgs e)
         {
             SubTotal();
+        }
+        public void TotalPedido()
+        {
+            SqlDataReader drReader;
+
+            //instancia a classe
+            clItensPedido clItensPedido = new clItensPedido();
+            clItensPedido.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clItensPedido.TotalPedido(Convert.ToInt32(txtCodigo.Text));
+            if (drReader.Read())
+            {
+                txtSubtotal.Text = drReader["Subtotal"].ToString();
+            }
+            else
+            {
+                txtSubtotal.Text = "0,00";
+            }
+            drReader.Close();
+        }
+
+        private void dgvPedidos_DoubleClick(object sender, EventArgs e)
+        {
+            //verifica se existe itens na grid
+            if (dgvPedidos.RowCount == 0)
+            {
+                return;
+            }
+
+            //carrega a tela com todos os dados do cliente
+            SqlDataReader drReader;
+            clItensPedido clItensPedido = new clItensPedido();
+            clItensPedido.banco = Properties.Settings.Default.conexaoDB;
+            drReader = clItensPedido.Pesquisar(Convert.ToInt32(dgvPedidos.CurrentRow.Cells[0].Value));
+
+            if (drReader.Read())
+            {
+                //transfere os dados do banco de dados para os campos do formulário
+                txtCodigo.Text = drReader["cliCodigo"].ToString();
+                txtNome.Text = drReader["cliNome"].ToString();
+                txtEndereco.Text = drReader["cliEndereco"].ToString();
+                txtNumero.Text = drReader["cliNumero"].ToString();
+                txtBairro.Text = drReader["cliBairro"].ToString();
+                txtCidade.Text = drReader["cliCidade"].ToString();
+                cboEstado.Text = drReader["cliEstado"].ToString();
+                mskCEP.Text = drReader["cliCEP"].ToString();
+                mskCelular.Text = drReader["cliCelular"].ToString();
+                mskCPF.Text = drReader["cliCPF"].ToString();
+
+                //habilita o frame e envia o cursor para o campo nome
+                tabControl1.SelectedTab = tabPage2;
+                txtNome.Focus();
+            }
+            drReader.Close();
         }
     }
 }

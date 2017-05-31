@@ -182,5 +182,20 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
+        public SqlDataReader PesquisarNome(string cliNome)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT cliCodigo ");
+            strQuery.Append(" FROM tbClientes ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" cliNome = '" + cliNome + "'");
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
+        }
     }
 }
