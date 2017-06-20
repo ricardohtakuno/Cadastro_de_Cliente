@@ -89,7 +89,7 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             clAcessoDB.ExecutaComando(strQuery.ToString());
         }
-        public DataSet Pesquisar(int IDPedido)
+        public DataSet Pesquisar(int ID_Pedido)
         {
             StringBuilder strQuery = new StringBuilder();
 
@@ -98,7 +98,7 @@ namespace Negocio
             strQuery.Append(" tbItensPedido.Qtde, tbItensPedido.Unitario, tbItensPedido.Subtotal ");
             strQuery.Append(" FROM tbItensPedido INNER JOIN tbProdutos ");
             strQuery.Append(" ON tbItensPedido.ID_Produto = tbProdutos.proCodigo ");
-            strQuery.Append(" WHERE tbItensPedido.ID_Pedido = " + IDPedido);
+            strQuery.Append(" WHERE tbItensPedido.ID_Pedido = " + ID_Pedido);
 
             //executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();
@@ -119,25 +119,39 @@ namespace Negocio
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
-        public DataSet PesquisarPedido(string Campo, string Filtro)
+        public DataSet Pesquisar(string Campo, string Filtro)
         {
             StringBuilder strQuery = new StringBuilder();
 
             //montagem do select
-            strQuery.Append(" SELECT usrCod Codigo, usrNome Nome, ");
-            strQuery.Append(" usrClientes Clientes, usrProdutos Produtos, usrUsuarios Usuarios, usrFornecedores Fornecedores ");
-            strQuery.Append(" FROM tbUsuarios ");
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbPedidos ");
             if (Campo != string.Empty && Filtro != string.Empty)
             {
                 strQuery.Append(" WHERE ");
                 strQuery.Append(Campo + " LIKE '" + "%" + Filtro + "%" + "'");
             }
-            strQuery.Append(" ORDER BY usrNome ");
+            strQuery.Append(" ORDER BY Data ");
 
             //executa o comando
             clAcessoDB clAcessoDB = new clAcessoDB();
             clAcessoDB.vConexao = banco;
             return clAcessoDB.RetornaDataSet(strQuery.ToString());
+        }
+        public SqlDataReader PesquisarCodigo(int ID_Item)
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do select
+            strQuery.Append(" SELECT * ");
+            strQuery.Append(" FROM tbPedidos ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" ID_Item = " + ID_Item);
+
+            //executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            return clAcessoDB.RetornaDataReader(strQuery.ToString());
         }
     }
 }

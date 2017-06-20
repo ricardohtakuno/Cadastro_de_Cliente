@@ -262,14 +262,14 @@ namespace Dados_do_Cliente.Formularios
             SqlDataReader drReader;
             clItensPedido clItensPedido = new clItensPedido();
             clItensPedido.banco = Properties.Settings.Default.conexaoDB;
-            drReader = clItensPedido.Pesquisar(Convert.ToInt32(dgvPedidos.CurrentRow.Cells[0].Value));
+            drReader = clItensPedido.PesquisarCodigo(Convert.ToInt32(dgvPedidos.CurrentRow.Cells[0].Value));
 
             if (drReader.Read())
             {
                 //transfere os dados do banco de dados para os campos do formulário
-                txtCodigo.Text = drReader["cliCodigo"].ToString();
-                txtNome.Text = drReader["cliNome"].ToString();
-                txtEndereco.Text = drReader["cliEndereco"].ToString();
+                txtCodigo.Text = drReader["ID_Item"].ToString();
+                dtpData.Text = drReader["Data"].ToString();
+                cboClientes.Text = drReader["cli"].ToString();
                 txtNumero.Text = drReader["cliNumero"].ToString();
                 txtBairro.Text = drReader["cliBairro"].ToString();
                 txtCidade.Text = drReader["cliCidade"].ToString();
